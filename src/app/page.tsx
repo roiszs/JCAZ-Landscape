@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { HeroVideo } from "../components/sections/HeroVideo";
+
 
 
 export default function Home() {
@@ -88,16 +90,10 @@ export default function Home() {
             <p className="text-sm text-brand-white/70">
               
             </p>
-            <div className="mt-4 relative h-64 overflow-hidden rounded-xl">
-            <Image
-              src="/brand/hero.jpg"
-              alt="Recent work"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-            />
-          </div>
+            <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
+
+
+
 
           </div>
         </div>
