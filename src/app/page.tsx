@@ -1,12 +1,22 @@
+import Image from "next/image";
+
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-brand-black text-brand-white">
       <header className="sticky top-0 z-50 border-b border-brand-white/10 bg-brand-black/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <div className="font-extrabold tracking-wide">
-            <span className="text-brand-white">JCAZ</span>
-            <span className="text-brand-gold">.</span>
-          </div>
+        <a href="#" className="flex items-center gap-3">
+        <Image
+          src="/brand/logo-main.png"
+          alt="JCAZ Landscape LLC"
+          width={140}
+          height={32}
+          priority
+          className="h-10 w-auto"
+        />
+      </a>
+
 
           <nav className="hidden gap-6 text-sm text-brand-white/80 md:flex">
             <a className="hover:text-brand-white" href="#services">Services</a>
@@ -76,9 +86,19 @@ export default function Home() {
 
           <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
             <p className="text-sm text-brand-white/70">
-              Aquí irá: imagen/slider tipo AZTop (proyectos reales).
+              
             </p>
-            <div className="mt-4 h-64 rounded-xl bg-brand-black/40" />
+            <div className="mt-4 relative h-64 overflow-hidden rounded-xl">
+            <Image
+              src="/brand/hero.jpg"
+              alt="Recent work"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
+          </div>
+
           </div>
         </div>
       </section>
@@ -135,7 +155,16 @@ export default function Home() {
               key={n}
               className="overflow-hidden rounded-2xl border border-brand-white/10 bg-brand-white/5"
             >
-              <div className="h-44 bg-brand-black/40" />
+              <div className="relative h-44">
+              <Image
+                src={`/images/projects/project-${String(n).padStart(2, "0")}.jpg`}
+                alt={`Project ${n}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            </div>
+
               <div className="p-4">
                 <p className="font-bold">Project {n}</p>
                 <p className="mt-1 text-sm text-brand-white/70">City • Service type</p>
