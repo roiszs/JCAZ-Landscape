@@ -45,7 +45,8 @@ export default function Home() {
       </header>
 
       <section className="mx-auto max-w-6xl px-4 py-14">
-        <div className="grid gap-8 md:grid-cols-2 md:items-center">
+      <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+
           <div>
             <p className="mb-3 inline-flex rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
               Arizona • Licensed / Insured • Fast Scheduling
@@ -90,8 +91,9 @@ export default function Home() {
             <p className="text-sm text-brand-white/70">
               
             </p>
+            <div className="flex md:justify-end">
             <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
-
+            </div>
 
 
 
