@@ -10,4 +10,6 @@ html, body {
   height: 100%;
 }
 
-body { @apply bg-brand-bg text-brand-fg antialiased; }
+body {
+  @apply bg-brand-black text-brand-white antialiased;
+}

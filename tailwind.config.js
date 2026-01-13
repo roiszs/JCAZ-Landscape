@@ -1,4 +1,3 @@
-// tailwind.config.ts
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -10,12 +9,10 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          bg: "#161616",
-          fg: "#FCFBF7",
-          green: "#3D7433",
-          green2: "#469C44",
-          yellow: "#E2BE27",
-          yellow2: "#FDDA3D",
+          green: "#0F6300",   // Saguaro Green
+          gold: "#FFCE00",    // Desert Sun Gold
+          white: "#FFFFFF",   // Sonoran White Sand
+          black: "#000000",   // Monument Shadow
         },
       },
     },
