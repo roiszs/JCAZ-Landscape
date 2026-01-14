@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { Play } from "lucide-react";
+
 
 type Props = {
   mp4Src: string;
@@ -47,9 +49,11 @@ export function HeroVideo({ mp4Src, posterSrc }: Props) {
             className="absolute inset-0 flex items-center justify-center bg-brand-black/30 hover:bg-brand-black/20"
             aria-label="Play introduction video"
           >
-            <span className="rounded-full bg-brand-green px-6 py-3 font-extrabold text-brand-black">
-              ▶ Play Video
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand-white px-6 py-3 font-extrabold text-brand-black">
+            <Play className="h-5 w-5 text-brand-green" />
+            Play Video
             </span>
+
           </button>
         )}
       </div>
