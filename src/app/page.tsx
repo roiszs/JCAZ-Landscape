@@ -1,219 +1,567 @@
 import Image from "next/image";
 import { HeroVideo } from "../components/sections/HeroVideo";
 
+const PHONE_DISPLAY = "480-227-7319";
+const PHONE_HREF = "tel:+14802277319";
+const EMAIL = "jcazlandscape@yahoo.com";
+const EMAIL_HREF = `mailto:${EMAIL}`;
+const LOCATION = "Phoenix, AZ";
+const INSTAGRAM = "https://www.instagram.com/jcarizonalandscape/";
+const FACEBOOK = "https://www.facebook.com/100083666319172/";
 
+const services = [
+  {
+    key: "hardscaping",
+    enTitle: "Hardscaping",
+    esTitle: "Hardscape",
+    enDesc: "Patios, walkways, retaining walls and outdoor upgrades built to last.",
+    esDesc: "Patios, andadores, muros de contención y mejoras exteriores hechas para durar.",
+  },
+  {
+    key: "pavers",
+    enTitle: "Pavers",
+    esTitle: "Adoquín (Pavers)",
+    enDesc: "Clean layouts and professional installation for patios, driveways and paths.",
+    esDesc: "Diseño limpio e instalación profesional para patios, cocheras y pasillos.",
+  },
+  {
+    key: "turf",
+    enTitle: "Artificial Turf",
+    esTitle: "Pasto Artificial",
+    enDesc: "Low-maintenance turf that stays green year-round.",
+    esDesc: "Pasto de bajo mantenimiento que se mantiene verde todo el año.",
+  },
+  {
+    key: "irrigation",
+    enTitle: "Irrigation",
+    esTitle: "Irrigación",
+    enDesc: "Efficient irrigation installs and fixes to keep your landscape healthy.",
+    esDesc: "Instalación y reparación de riego para mantener tu jardín en buen estado.",
+  },
+  {
+    key: "travertine",
+    enTitle: "Travertine",
+    esTitle: "Travertino",
+    enDesc: "Premium stone finishes for patios, pool areas and outdoor living spaces.",
+    esDesc: "Acabados premium en piedra para patios, albercas y áreas exteriores.",
+  },
+  {
+    key: "outdoorliving",
+    enTitle: "Outdoor Living",
+    esTitle: "Áreas Sociales",
+    enDesc: "BBQs, pergolas and fire pits to turn your yard into a true gathering space.",
+    esDesc: "Asadores, pérgolas y fogateros para convertir tu patio en un espacio para convivir.",
+  },
+  {
+    key: "maintenance",
+    enTitle: "Maintenance & Cleanups",
+    esTitle: "Mantenimiento y Limpiezas",
+    enDesc: "Residential & commercial maintenance, cleanups, weed control and HOA support.",
+    esDesc: "Mantenimiento residencial y comercial, limpiezas, control de maleza y apoyo a HOA.",
+  },
+];
+
+const processSteps = [
+  {
+    en: "Call / Message",
+    es: "Llama / Mensaje",
+  },
+  {
+    en: "On-Site Visit",
+    es: "Visita al Sitio",
+  },
+  {
+    en: "Free Estimate",
+    es: "Cotización Gratis",
+  },
+  {
+    en: "Build & Walkthrough",
+    es: "Construcción y Entrega",
+  },
+];
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-brand-black text-brand-white">
-      <header className="sticky top-0 z-50 border-b border-brand-white/10 bg-brand-black/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <a href="#" className="flex items-center gap-3">
-        <Image
-          src="/brand/logo-main.png"
-          alt="JCAZ Landscape LLC"
-          width={140}
-          height={32}
-          priority
-          className="h-10 w-auto"
-        />
-      </a>
+      {/* Language toggle (no JS). Unchecked = EN, Checked = ES */}
+      <input id="lang-toggle" type="checkbox" className="peer sr-only" />
 
-
-          <nav className="hidden gap-6 text-sm text-brand-white/80 md:flex">
-            <a className="hover:text-brand-white" href="#services">Services</a>
-            <a className="hover:text-brand-white" href="#process">Process</a>
-            <a className="hover:text-brand-white" href="#projects">Projects</a>
-            <a className="hover:text-brand-white" href="#contact">Contact</a>
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <a
-              href="tel:+1XXXXXXXXXX"
-              className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-            >
-              Call Now
-            </a>
-            <a
-              href="#contact"
-              className="rounded-xl bg-brand-gold px-3 py-2 text-sm font-bold text-brand-black hover:bg-brand-gold/90"
-            >
-              Free Estimate
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <section className="mx-auto max-w-6xl px-4 py-14">
-      <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
-
-          <div>
-            <p className="mb-3 inline-flex rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
-              Arizona • Licensed / Insured • Fast Scheduling
-            </p>
-
-            <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
-              Outdoor & Construction Work Built to Last.
-            </h1>
-
-            <p className="mt-4 text-brand-white/80">
-              Clear estimates, clean execution, and a crew you can trust. Serving Arizona with quality craftsmanship.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="#contact"
-                className="rounded-xl bg-brand-gold px-5 py-3 font-bold text-brand-black hover:bg-brand-gold/90"
-              >
-                Get a Free Estimate
-              </a>
-              <a
-                href="#services"
-                className="rounded-xl border border-brand-white/15 px-5 py-3 font-bold text-brand-white hover:border-brand-white/30"
-              >
-                View Services
-              </a>
-            </div>
-
-            <div className="mt-8 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
-              {["Licensed", "Insured", "Warranty", "Free Estimates"].map((t) => (
-                <div
-                  key={t}
-                  className="rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
-                >
-                  {t}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
-            <p className="text-sm text-brand-white/70">
-              
-            </p>
-            <div className="flex md:justify-end">
-            <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
-            </div>
-
-
-
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-2xl font-extrabold">Services</h2>
-        <p className="mt-2 text-brand-white/75">
-          Select a service and request a free estimate.
-        </p>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {["Hardscaping", "Pavers", "Artificial Turf", "Grading", "Concrete", "Outdoor Lighting"].map((s) => (
-            <div
-              key={s}
-              className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5 hover:border-brand-white/20"
-            >
-              <p className="font-bold">{s}</p>
-              <p className="mt-2 text-sm text-brand-white/70">
-                Short benefit line for conversion. (We’ll replace with real copy.)
-              </p>
-              <a
-                href="#contact"
-                className="mt-4 inline-block text-sm font-bold text-brand-gold hover:text-brand-gold/90"
-              >
-                Get Estimate →
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="process" className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-2xl font-extrabold">Our Process</h2>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-4">
-          {["Call / Form", "Site Visit", "Estimate", "Build & Walkthrough"].map((step, i) => (
-            <div
-              key={step}
-              className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5"
-            >
-              <p className="text-brand-gold font-bold">Step {i + 1}</p>
-              <p className="mt-2 font-bold">{step}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="projects" className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-2xl font-extrabold">Recent Projects</h2>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div
-              key={n}
-              className="overflow-hidden rounded-2xl border border-brand-white/10 bg-brand-white/5"
-            >
-              <div className="relative h-44">
+      <div className="peer-checked:[&_.en]:hidden peer-checked:[&_.es]:block [&_.es]:hidden">
+        {/* HEADER */}
+        <header className="sticky top-0 z-50 border-b border-brand-white/10 bg-brand-black/80 backdrop-blur">
+          <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+            <a href="#" className="flex items-center gap-3">
               <Image
-                src={`/images/projects/project-${String(n).padStart(2, "0")}.jpg`}
-                alt={`Project ${n}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
+                src="/brand/logo-main.png"
+                alt="JCAZ Landscape LLC"
+                width={160}
+                height={40}
+                priority
+                className="h-10 w-auto"
               />
-            </div>
+            </a>
 
-              <div className="p-4">
-                <p className="font-bold">Project {n}</p>
-                <p className="mt-1 text-sm text-brand-white/70">City • Service type</p>
+            <nav className="hidden gap-6 text-sm text-brand-white/80 md:flex">
+              <a className="hover:text-brand-white" href="#services">
+                <span className="en">Services</span>
+                <span className="es">Servicios</span>
+              </a>
+              <a className="hover:text-brand-white" href="#about">
+                <span className="en">About</span>
+                <span className="es">Nosotros</span>
+              </a>
+              <a className="hover:text-brand-white" href="#process">
+                <span className="en">Process</span>
+                <span className="es">Proceso</span>
+              </a>
+              <a className="hover:text-brand-white" href="#projects">
+                <span className="en">Projects</span>
+                <span className="es">Proyectos</span>
+              </a>
+              <a className="hover:text-brand-white" href="#contact">
+                <span className="en">Contact</span>
+                <span className="es">Contacto</span>
+              </a>
+            </nav>
+
+            <div className="flex items-center gap-2">
+              {/* Language switch */}
+              <label
+                htmlFor="lang-toggle"
+                className="hidden cursor-pointer select-none rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30 md:inline-flex"
+                title="Toggle language"
+              >
+                <span className="en">ES</span>
+                <span className="es">EN</span>
+              </label>
+
+              <a
+                href={PHONE_HREF}
+                className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+              >
+                <span className="en">Call Now</span>
+                <span className="es">Llamar</span>
+              </a>
+
+              <a
+                href="#contact"
+                className="rounded-xl bg-brand-gold px-3 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
+              >
+                <span className="en">Free Estimate</span>
+                <span className="es">Cotización Gratis</span>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        {/* HERO */}
+        <section className="mx-auto max-w-6xl px-4 py-12">
+          <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+            <div>
+              <p className="mb-3 inline-flex rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
+                <span className="en">Phoenix & Valley-Wide • Licensed / Insured • Fast Scheduling</span>
+                <span className="es">Phoenix y todo el Valle • Licenciados / Asegurados • Agenda Rápida</span>
+              </p>
+
+              <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
+                <span className="en">Hardscaping & Outdoor Living Built to Last.</span>
+                <span className="es">Hardscape y Exteriores Hechos Para Durar.</span>
+              </h1>
+
+              <p className="mt-4 text-brand-white/80">
+                <span className="en">
+                  From pavers and turf to pergolas and fire pits—clear estimates, clean execution, and results you’ll love.
+                </span>
+                <span className="es">
+                  Desde adoquín y pasto artificial hasta pérgolas y fogateros—cotizaciones claras, buen trabajo y resultados que te van a encantar.
+                </span>
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#contact"
+                  className="rounded-xl bg-brand-gold px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90"
+                >
+                  <span className="en">Get a Free Estimate</span>
+                  <span className="es">Pedir Cotización</span>
+                </a>
+
+                <a
+                  href={PHONE_HREF}
+                  className="rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
+                >
+                  <span className="en">Call {PHONE_DISPLAY}</span>
+                  <span className="es">Llama {PHONE_DISPLAY}</span>
+                </a>
+              </div>
+
+              <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
+                {[
+                  { en: "Licensed", es: "Licenciados" },
+                  { en: "Insured", es: "Asegurados" },
+                  { en: "Warranty", es: "Garantía" },
+                  { en: "Financing Available", es: "Financiamiento" },
+                ].map((t) => (
+                  <div key={t.en} className="rounded-xl border border-brand-white/10 bg-brand-white/5 p-3">
+                    <span className="en">{t.en}</span>
+                    <span className="es">{t.es}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      <section id="contact" className="mx-auto max-w-6xl px-4 py-14">
-        <div className="rounded-3xl border border-brand-white/10 bg-brand-white/5 p-6 md:p-10">
-          <h2 className="text-2xl font-extrabold">Get a Free Estimate</h2>
+            {/* Video card */}
+            <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
+              <p className="text-sm text-brand-white/70">
+                <span className="en">Watch a quick intro and see recent work.</span>
+                <span className="es">Mira una breve presentación y trabajos recientes.</span>
+              </p>
+
+              <div className="flex md:justify-end">
+                <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                <a
+                  href={INSTAGRAM}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                >
+                  Instagram
+                </a>
+                <a
+                  href={FACEBOOK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                >
+                  Facebook
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICES */}
+        <section id="services" className="mx-auto max-w-6xl px-4 py-10">
+          <h2 className="text-2xl font-extrabold">
+            <span className="en">Services</span>
+            <span className="es">Servicios</span>
+          </h2>
           <p className="mt-2 text-brand-white/75">
-            Send your details and we’ll contact you shortly.
+            <span className="en">Free estimates valley-wide. Tell us what you need—our team will handle the rest.</span>
+            <span className="es">Cotizaciones gratis en todo el Valle. Dinos qué necesitas y nosotros nos encargamos.</span>
           </p>
 
-          <form className="mt-6 grid gap-3 md:grid-cols-2">
-            <input
-              className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60"
-              placeholder="Name"
-            />
-            <input
-              className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60"
-              placeholder="Phone"
-            />
-            <input
-              className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
-              placeholder="Email (optional)"
-            />
-            <textarea
-              className="min-h-28 rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
-              placeholder="Tell us about your project..."
-            />
-            <button
-              className="rounded-xl bg-brand-gold px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90 md:col-span-2"
-              type="button"
-            >
-              Submit
-            </button>
-          </form>
-        </div>
-      </section>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {services.map((s) => (
+              <div
+                key={s.key}
+                className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5 hover:border-brand-white/20"
+              >
+                <p className="font-extrabold">
+                  <span className="en">{s.enTitle}</span>
+                  <span className="es">{s.esTitle}</span>
+                </p>
 
-      <footer className="border-t border-brand-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-brand-white/75">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} JCAZ Landscape LLC</p>
-            <p className="text-brand-white/60">Arizona • (Phone) • (Email)</p>
+                <p className="mt-2 text-sm text-brand-white/70">
+                  <span className="en">{s.enDesc}</span>
+                  <span className="es">{s.esDesc}</span>
+                </p>
+
+                <div className="mt-4 flex items-center justify-between">
+                  <a
+                    href="#contact"
+                    className="text-sm font-extrabold text-brand-gold hover:text-brand-gold/90"
+                  >
+                    <span className="en">Get Estimate →</span>
+                    <span className="es">Cotizar →</span>
+                  </a>
+
+                  <a
+                    href={PHONE_HREF}
+                    className="text-sm font-extrabold text-brand-white/85 hover:text-brand-white"
+                  >
+                    <span className="en">Call</span>
+                    <span className="es">Llamar</span>
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* ABOUT */}
+        <section id="about" className="mx-auto max-w-6xl px-4 py-10">
+          <div className="rounded-3xl border border-brand-white/10 bg-brand-white/5 p-6 md:p-10">
+            <h2 className="text-2xl font-extrabold">
+              <span className="en">About JCAZ</span>
+              <span className="es">Sobre JCAZ</span>
+            </h2>
+
+            <p className="mt-3 text-brand-white/80">
+              <span className="en">
+                Great service begins and ends with experienced professionals. We work efficiently, stay on schedule,
+                and focus on lasting results—built on professionalism, excellence, and timeliness.
+              </span>
+              <span className="es">
+                Un gran servicio comienza y termina con profesionales con experiencia. Trabajamos de forma eficiente,
+                cumplimos tiempos y nos enfocamos en resultados duraderos—con profesionalismo, excelencia y puntualidad.
+              </span>
+            </p>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-brand-white/10 bg-brand-black/40 p-5">
+                <p className="font-extrabold text-brand-gold">
+                  <span className="en">Mission</span>
+                  <span className="es">Misión</span>
+                </p>
+                <p className="mt-2 text-sm text-brand-white/75">
+                  <span className="en">
+                    Provide quality design and attention to detail with every job. Integrity and quality drive our work.
+                  </span>
+                  <span className="es">
+                    Brindar diseño de calidad y atención al detalle en cada trabajo. La integridad y la calidad nos definen.
+                  </span>
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-brand-white/10 bg-brand-black/40 p-5">
+                <p className="font-extrabold text-brand-gold">
+                  <span className="en">Vision</span>
+                  <span className="es">Visión</span>
+                </p>
+                <p className="mt-2 text-sm text-brand-white/75">
+                  <span className="en">
+                    Every project is unique. We maximize your vision to bring a beautiful landscape to every home.
+                  </span>
+                  <span className="es">
+                    Cada proyecto es único. Maximizamos tu visión para lograr un paisaje hermoso en cada hogar.
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PROCESS */}
+        <section id="process" className="mx-auto max-w-6xl px-4 py-10">
+          <h2 className="text-2xl font-extrabold">
+            <span className="en">Our Process</span>
+            <span className="es">Nuestro Proceso</span>
+          </h2>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-4">
+            {processSteps.map((step, i) => (
+              <div
+                key={step.en}
+                className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5"
+              >
+                <p className="text-brand-gold font-extrabold">Step {i + 1}</p>
+                <p className="mt-2 font-extrabold">
+                  <span className="en">{step.en}</span>
+                  <span className="es">{step.es}</span>
+                </p>
+                <p className="mt-2 text-sm text-brand-white/70">
+                  <span className="en">Fast communication and clear next steps.</span>
+                  <span className="es">Comunicación rápida y pasos claros.</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECTS */}
+        <section id="projects" className="mx-auto max-w-6xl px-4 py-10">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-2xl font-extrabold">
+                <span className="en">Recent Projects</span>
+                <span className="es">Proyectos Recientes</span>
+              </h2>
+              <p className="mt-2 text-brand-white/75">
+                <span className="en">Explore more work on Instagram & Facebook.</span>
+                <span className="es">Mira más trabajos en Instagram y Facebook.</span>
+              </p>
+            </div>
+
+            <div className="flex gap-2">
+              <a
+                href={INSTAGRAM}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-xl bg-brand-gold px-4 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
+              >
+                Instagram
+              </a>
+              <a
+                href={FACEBOOK}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-xl border border-brand-white/15 px-4 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
+              >
+                Facebook
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div
+                key={n}
+                className="overflow-hidden rounded-2xl border border-brand-white/10 bg-brand-white/5"
+              >
+                <div className="relative h-44">
+                  <Image
+                    src={`/images/projects/project-${String(n).padStart(2, "0")}.jpg`}
+                    alt={`Project ${n}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+
+                <div className="p-4">
+                  <p className="font-extrabold">
+                    <span className="en">Project {n}</span>
+                    <span className="es">Proyecto {n}</span>
+                  </p>
+                  <p className="mt-1 text-sm text-brand-white/70">
+                    <span className="en">Phoenix Area • Outdoor Upgrade</span>
+                    <span className="es">Área de Phoenix • Mejora Exterior</span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="mx-auto max-w-6xl px-4 py-14">
+          <div className="rounded-3xl border border-brand-white/10 bg-brand-white/5 p-6 md:p-10">
+            <div className="grid gap-6 md:grid-cols-2 md:items-start">
+              <div>
+                <h2 className="text-2xl font-extrabold">
+                  <span className="en">Get a Free Estimate</span>
+                  <span className="es">Cotización Gratis</span>
+                </h2>
+                <p className="mt-2 text-brand-white/75">
+                  <span className="en">Call, email, or send your details and we’ll contact you shortly.</span>
+                  <span className="es">Llama, envía email o deja tus datos y te contactamos pronto.</span>
+                </p>
+
+                <div className="mt-5 space-y-2 text-sm text-brand-white/80">
+                  <p>
+                    <span className="font-extrabold text-brand-white">Phone:</span>{" "}
+                    <a className="text-brand-gold hover:text-brand-gold/90" href={PHONE_HREF}>
+                      {PHONE_DISPLAY}
+                    </a>
+                  </p>
+                  <p>
+                    <span className="font-extrabold text-brand-white">Email:</span>{" "}
+                    <a className="text-brand-gold hover:text-brand-gold/90" href={EMAIL_HREF}>
+                      {EMAIL}
+                    </a>
+                  </p>
+                  <p>
+                    <span className="font-extrabold text-brand-white">
+                      <span className="en">Location:</span>
+                      <span className="es">Ubicación:</span>
+                    </span>{" "}
+                    {LOCATION}
+                  </p>
+
+                  <div className="pt-2 flex flex-wrap gap-2">
+                    <a
+                      href={INSTAGRAM}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                    >
+                      Instagram
+                    </a>
+                    <a
+                      href={FACEBOOK}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                    >
+                      Facebook
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <form className="grid gap-3 md:grid-cols-2">
+                <input
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60"
+                  placeholder="First Name / Nombre"
+                />
+                <input
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60"
+                  placeholder="Last Name / Apellido"
+                />
+                <input
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
+                  placeholder="Phone / Teléfono"
+                />
+                <input
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
+                  placeholder="Email"
+                />
+                <textarea
+                  className="min-h-28 rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
+                  placeholder="Project details / Detalles del proyecto"
+                />
+                <button
+                  className="rounded-xl bg-brand-gold px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90 md:col-span-2"
+                  type="button"
+                >
+                  <span className="en">Submit</span>
+                  <span className="es">Enviar</span>
+                </button>
+
+                <p className="md:col-span-2 text-xs text-brand-white/60">
+                  <span className="en">Tip: include your city and the service you need for faster scheduling.</span>
+                  <span className="es">Tip: agrega tu ciudad y el servicio que necesitas para agendar más rápido.</span>
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="border-t border-brand-white/10">
+          <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-brand-white/75">
+            <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <p>© {new Date().getFullYear()} JCAZ Landscape LLC</p>
+              <p className="text-brand-white/60">
+                {LOCATION} • {PHONE_DISPLAY} • {EMAIL}
+              </p>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a
+                href={INSTAGRAM}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+              >
+                Instagram
+              </a>
+              <a
+                href={FACEBOOK}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+              >
+                Facebook
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 }
