@@ -1,5 +1,25 @@
 import Image from "next/image";
 import { HeroVideo } from "../components/sections/HeroVideo";
+import {
+  Instagram,
+  Facebook,
+  PhoneCall,
+  Mail,
+  MapPin,
+  Hammer,
+  BrickWall,
+  Leaf,
+  Droplet,
+  Flame,
+  Wrench,
+  ShieldCheck,
+  BadgeCheck,
+  Clock,
+  FileText,
+  HardHat,
+  Images,
+  ArrowUpRight,
+} from "lucide-react";
 
 const PHONE_DISPLAY = "480-227-7319";
 const PHONE_HREF = "tel:+14802277319";
@@ -62,23 +82,21 @@ const services = [
 ];
 
 const processSteps = [
-  {
-    en: "Call / Message",
-    es: "Llama / Mensaje",
-  },
-  {
-    en: "On-Site Visit",
-    es: "Visita al Sitio",
-  },
-  {
-    en: "Free Estimate",
-    es: "Cotización Gratis",
-  },
-  {
-    en: "Build & Walkthrough",
-    es: "Construcción y Entrega",
-  },
+  { en: "Call / Message", es: "Llama / Mensaje", icon: PhoneCall },
+  { en: "On-Site Visit", es: "Visita al Sitio", icon: MapPin },
+  { en: "Free Estimate", es: "Cotización Gratis", icon: FileText },
+  { en: "Build & Walkthrough", es: "Construcción y Entrega", icon: HardHat },
 ];
+
+const serviceIconByKey: Record<string, any> = {
+  hardscaping: Hammer,
+  pavers: BrickWall,
+  turf: Leaf,
+  irrigation: Droplet,
+  travertine: FileText,
+  outdoorliving: Flame,
+  maintenance: Wrench,
+};
 
 export default function Home() {
   return (
@@ -137,16 +155,18 @@ export default function Home() {
 
               <a
                 href={PHONE_HREF}
-                className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
               >
+                <PhoneCall className="h-4 w-4 text-brand-green" />
                 <span className="en">Call Now</span>
                 <span className="es">Llamar</span>
               </a>
 
               <a
                 href="#contact"
-                className="rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90"
               >
+                <ArrowUpRight className="h-4 w-4 text-brand-white" />
                 <span className="en">Free Estimate</span>
                 <span className="es">Cotización Gratis</span>
               </a>
@@ -158,7 +178,8 @@ export default function Home() {
         <section className="mx-auto max-w-6xl px-4 py-12">
           <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
             <div>
-              <p className="mb-3 inline-flex rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
+              <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
+                <MapPin className="h-4 w-4 text-brand-green" />
                 <span className="en">Phoenix & Valley-Wide • Licensed / Insured • Fast Scheduling</span>
                 <span className="es">Phoenix y todo el Valle • Licenciados / Asegurados • Agenda Rápida</span>
               </p>
@@ -180,16 +201,18 @@ export default function Home() {
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="#contact"
-                  className="rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
                 >
+                  <ArrowUpRight className="h-4 w-4 text-brand-white" />
                   <span className="en">Get a Free Estimate</span>
                   <span className="es">Pedir Cotización</span>
                 </a>
 
                 <a
                   href={PHONE_HREF}
-                  className="rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
+                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
                 >
+                  <PhoneCall className="h-4 w-4 text-brand-green" />
                   <span className="en">Call {PHONE_DISPLAY}</span>
                   <span className="es">Llama {PHONE_DISPLAY}</span>
                 </a>
@@ -197,16 +220,22 @@ export default function Home() {
 
               <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
                 {[
-                  { en: "Licensed", es: "Licenciados" },
-                  { en: "Insured", es: "Asegurados" },
-                  { en: "Warranty", es: "Garantía" },
-                  { en: "Financing Available", es: "Financiamiento" },
-                ].map((t) => (
-                  <div key={t.en} className="rounded-xl border border-brand-white/10 bg-brand-white/5 p-3">
-                    <span className="en">{t.en}</span>
-                    <span className="es">{t.es}</span>
-                  </div>
-                ))}
+                  { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
+                  { en: "Insured", es: "Asegurados", icon: ShieldCheck },
+                  { en: "Warranty", es: "Garantía", icon: Clock },
+                  { en: "Financing Available", es: "Financiamiento", icon: FileText },
+                ].map((t) => {
+                  const Ico = t.icon;
+                  return (
+                    <div key={t.en} className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3">
+                      <Ico className="h-4 w-4 text-brand-green" />
+                      <div className="leading-tight">
+                        <span className="en">{t.en}</span>
+                        <span className="es">{t.es}</span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -226,16 +255,18 @@ export default function Home() {
                   href={INSTAGRAM}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
                 >
+                  <Instagram className="h-4 w-4 text-brand-green" />
                   Instagram
                 </a>
                 <a
                   href={FACEBOOK}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
                 >
+                  <Facebook className="h-4 w-4 text-brand-green" />
                   Facebook
                 </a>
               </div>
@@ -255,50 +286,62 @@ export default function Home() {
           </p>
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {services.map((s) => (
-              <div
-                key={s.key}
-                className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5 hover:border-brand-white/20"
-              >
-                <p className="font-extrabold">
-                  <span className="en">{s.enTitle}</span>
-                  <span className="es">{s.esTitle}</span>
-                </p>
+            {services.map((s) => {
+              const Ico = serviceIconByKey[s.key] ?? Wrench;
 
-                <p className="mt-2 text-sm text-brand-white/70">
-                  <span className="en">{s.enDesc}</span>
-                  <span className="es">{s.esDesc}</span>
-                </p>
+              return (
+                <div
+                  key={s.key}
+                  className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5 hover:border-brand-white/20"
+                >
+                  <div className="flex items-center gap-2">
+                    <Ico className="h-5 w-5 text-brand-green" />
+                    <p className="font-extrabold">
+                      <span className="en">{s.enTitle}</span>
+                      <span className="es">{s.esTitle}</span>
+                    </p>
+                  </div>
 
-                <div className="mt-4 flex items-center justify-between">
-                  <a
-                    href="#contact"
-                    className="text-sm font-extrabold text-brand-green hover:text-brand-gold/90"
-                  >
-                    <span className="en">Get Estimate →</span>
-                    <span className="es">Cotizar →</span>
-                  </a>
+                  <p className="mt-2 text-sm text-brand-white/70">
+                    <span className="en">{s.enDesc}</span>
+                    <span className="es">{s.esDesc}</span>
+                  </p>
 
-                  <a
-                    href={PHONE_HREF}
-                    className="text-sm font-extrabold text-brand-white/85 hover:text-brand-white"
-                  >
-                    <span className="en">Call</span>
-                    <span className="es">Llamar</span>
-                  </a>
+                  <div className="mt-4 flex items-center justify-between">
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white hover:text-brand-white/90"
+                    >
+                      <ArrowUpRight className="h-4 w-4 text-brand-green" />
+                      <span className="en">Get Estimate</span>
+                      <span className="es">Cotizar</span>
+                    </a>
+
+                    <a
+                      href={PHONE_HREF}
+                      className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white/85 hover:text-brand-white"
+                    >
+                      <PhoneCall className="h-4 w-4 text-brand-green" />
+                      <span className="en">Call</span>
+                      <span className="es">Llamar</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
         {/* ABOUT */}
         <section id="about" className="mx-auto max-w-6xl px-4 py-10">
           <div className="rounded-3xl border border-brand-white/10 bg-brand-white/5 p-6 md:p-10">
-            <h2 className="text-2xl font-extrabold">
-              <span className="en">About JCAZ</span>
-              <span className="es">Sobre JCAZ</span>
-            </h2>
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="h-6 w-6 text-brand-green" />
+              <h2 className="text-2xl font-extrabold">
+                <span className="en">About JCAZ</span>
+                <span className="es">Sobre JCAZ</span>
+              </h2>
+            </div>
 
             <p className="mt-3 text-brand-white/80">
               <span className="en">
@@ -313,7 +356,8 @@ export default function Home() {
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-brand-white/10 bg-brand-black/40 p-5">
-                <p className="font-extrabold text-brand-green">
+                <p className="flex items-center gap-2 font-extrabold text-brand-white">
+                  <BadgeCheck className="h-5 w-5 text-brand-green" />
                   <span className="en">Mission</span>
                   <span className="es">Misión</span>
                 </p>
@@ -328,7 +372,8 @@ export default function Home() {
               </div>
 
               <div className="rounded-2xl border border-brand-white/10 bg-brand-black/40 p-5">
-                <p className="font-extrabold text-brand-green">
+                <p className="flex items-center gap-2 font-extrabold text-brand-white">
+                  <Clock className="h-5 w-5 text-brand-green" />
                   <span className="en">Vision</span>
                   <span className="es">Visión</span>
                 </p>
@@ -342,33 +387,67 @@ export default function Home() {
                 </p>
               </div>
             </div>
+
+            {/* Values row (extra trust) */}
+            <div className="mt-6 grid gap-3 md:grid-cols-3">
+              {[
+                { en: "Professionalism", es: "Profesionalismo", icon: HardHat },
+                { en: "Integrity", es: "Integridad", icon: ShieldCheck },
+                { en: "Excellence", es: "Excelencia", icon: BadgeCheck },
+              ].map((v) => {
+                const Ico = v.icon;
+                return (
+                  <div key={v.en} className="flex items-center gap-2 rounded-2xl border border-brand-white/10 bg-brand-white/5 p-4">
+                    <Ico className="h-5 w-5 text-brand-green" />
+                    <p className="text-sm font-extrabold text-brand-white/90">
+                      <span className="en">{v.en}</span>
+                      <span className="es">{v.es}</span>
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
 
         {/* PROCESS */}
         <section id="process" className="mx-auto max-w-6xl px-4 py-10">
-          <h2 className="text-2xl font-extrabold">
-            <span className="en">Our Process</span>
-            <span className="es">Nuestro Proceso</span>
-          </h2>
+          <div className="flex items-center gap-2">
+            <FileText className="h-6 w-6 text-brand-green" />
+            <h2 className="text-2xl font-extrabold">
+              <span className="en">Our Process</span>
+              <span className="es">Nuestro Proceso</span>
+            </h2>
+          </div>
 
           <div className="mt-6 grid gap-4 md:grid-cols-4">
-            {processSteps.map((step, i) => (
-              <div
-                key={step.en}
-                className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5"
-              >
-                <p className="text-brand-green font-extrabold">Step {i + 1}</p>
-                <p className="mt-2 font-extrabold">
-                  <span className="en">{step.en}</span>
-                  <span className="es">{step.es}</span>
-                </p>
-                <p className="mt-2 text-sm text-brand-white/70">
-                  <span className="en">Fast communication and clear next steps.</span>
-                  <span className="es">Comunicación rápida y pasos claros.</span>
-                </p>
-              </div>
-            ))}
+            {processSteps.map((step, i) => {
+              const Ico = step.icon;
+              return (
+                <div
+                  key={step.en}
+                  className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5"
+                >
+                  <div className="flex items-center justify-between">
+                    <p className="font-extrabold text-brand-white/90">
+                      <span className="en">Step {i + 1}</span>
+                      <span className="es">Paso {i + 1}</span>
+                    </p>
+                    <Ico className="h-5 w-5 text-brand-green" />
+                  </div>
+
+                  <p className="mt-2 font-extrabold">
+                    <span className="en">{step.en}</span>
+                    <span className="es">{step.es}</span>
+                  </p>
+
+                  <p className="mt-2 text-sm text-brand-white/70">
+                    <span className="en">Fast communication and clear next steps.</span>
+                    <span className="es">Comunicación rápida y pasos claros.</span>
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </section>
 
@@ -376,10 +455,14 @@ export default function Home() {
         <section id="projects" className="mx-auto max-w-6xl px-4 py-10">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-2xl font-extrabold">
-                <span className="en">Recent Projects</span>
-                <span className="es">Proyectos Recientes</span>
-              </h2>
+              <div className="flex items-center gap-2">
+                <Images className="h-6 w-6 text-brand-green" />
+                <h2 className="text-2xl font-extrabold">
+                  <span className="en">Recent Projects</span>
+                  <span className="es">Proyectos Recientes</span>
+                </h2>
+              </div>
+
               <p className="mt-2 text-brand-white/75">
                 <span className="en">Explore more work on Instagram & Facebook.</span>
                 <span className="es">Mira más trabajos en Instagram y Facebook.</span>
@@ -391,16 +474,18 @@ export default function Home() {
                 href={INSTAGRAM}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-xl bg-brand-green px-4 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-4 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90"
               >
+                <Instagram className="h-4 w-4 text-brand-white" />
                 Instagram
               </a>
               <a
                 href={FACEBOOK}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-xl border border-brand-white/15 px-4 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
+                className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-4 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
               >
+                <Facebook className="h-4 w-4 text-brand-green" />
                 Facebook
               </a>
             </div>
@@ -423,7 +508,8 @@ export default function Home() {
                 </div>
 
                 <div className="p-4">
-                  <p className="font-extrabold">
+                  <p className="flex items-center gap-2 font-extrabold">
+                    <ArrowUpRight className="h-4 w-4 text-brand-green" />
                     <span className="en">Project {n}</span>
                     <span className="es">Proyecto {n}</span>
                   </p>
@@ -442,29 +528,38 @@ export default function Home() {
           <div className="rounded-3xl border border-brand-white/10 bg-brand-white/5 p-6 md:p-10">
             <div className="grid gap-6 md:grid-cols-2 md:items-start">
               <div>
-                <h2 className="text-2xl font-extrabold">
-                  <span className="en">Get a Free Estimate</span>
-                  <span className="es">Cotización Gratis</span>
-                </h2>
+                <div className="flex items-center gap-2">
+                  <Mail className="h-6 w-6 text-brand-green" />
+                  <h2 className="text-2xl font-extrabold">
+                    <span className="en">Get a Free Estimate</span>
+                    <span className="es">Cotización Gratis</span>
+                  </h2>
+                </div>
+
                 <p className="mt-2 text-brand-white/75">
                   <span className="en">Call, email, or send your details and we’ll contact you shortly.</span>
                   <span className="es">Llama, envía email o deja tus datos y te contactamos pronto.</span>
                 </p>
 
-                <div className="mt-5 space-y-2 text-sm text-brand-white/80">
-                  <p>
+                <div className="mt-5 space-y-3 text-sm text-brand-white/80">
+                  <p className="flex items-center gap-2">
+                    <PhoneCall className="h-4 w-4 text-brand-green" />
                     <span className="font-extrabold text-brand-white">Phone:</span>{" "}
-                    <a className="text-brand-green hover:text-brand-gold/90" href={PHONE_HREF}>
+                    <a className="text-brand-white hover:text-brand-white/90" href={PHONE_HREF}>
                       {PHONE_DISPLAY}
                     </a>
                   </p>
-                  <p>
+
+                  <p className="flex items-center gap-2">
+                    <Mail className="h-4 w-4 text-brand-green" />
                     <span className="font-extrabold text-brand-white">Email:</span>{" "}
-                    <a className="text-brand-green hover:text-brand-gold/90" href={EMAIL_HREF}>
+                    <a className="text-brand-white hover:text-brand-white/90" href={EMAIL_HREF}>
                       {EMAIL}
                     </a>
                   </p>
-                  <p>
+
+                  <p className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-brand-green" />
                     <span className="font-extrabold text-brand-white">
                       <span className="en">Location:</span>
                       <span className="es">Ubicación:</span>
@@ -477,16 +572,18 @@ export default function Home() {
                       href={INSTAGRAM}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                      className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
                     >
+                      <Instagram className="h-4 w-4 text-brand-green" />
                       Instagram
                     </a>
                     <a
                       href={FACEBOOK}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                      className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
                     >
+                      <Facebook className="h-4 w-4 text-brand-green" />
                       Facebook
                     </a>
                   </div>
@@ -495,29 +592,30 @@ export default function Home() {
 
               <form className="grid gap-3 md:grid-cols-2">
                 <input
-                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60"
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60"
                   placeholder="First Name / Nombre"
                 />
                 <input
-                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60"
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60"
                   placeholder="Last Name / Apellido"
                 />
                 <input
-                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
                   placeholder="Phone / Teléfono"
                 />
                 <input
-                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
                   placeholder="Email"
                 />
                 <textarea
-                  className="min-h-28 rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-gold/60 md:col-span-2"
+                  className="min-h-28 rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
                   placeholder="Project details / Detalles del proyecto"
                 />
                 <button
-                  className="rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90 md:col-span-2"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90 md:col-span-2"
                   type="button"
                 >
+                  <ArrowUpRight className="h-4 w-4 text-brand-white" />
                   <span className="en">Submit</span>
                   <span className="es">Enviar</span>
                 </button>
@@ -546,16 +644,18 @@ export default function Home() {
                 href={INSTAGRAM}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
               >
+                <Instagram className="h-4 w-4 text-brand-green" />
                 Instagram
               </a>
               <a
                 href={FACEBOOK}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
               >
+                <Facebook className="h-4 w-4 text-brand-green" />
                 Facebook
               </a>
             </div>
