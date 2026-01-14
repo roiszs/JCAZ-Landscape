@@ -19,6 +19,7 @@ import {
   HardHat,
   Images,
   ArrowUpRight,
+  Play,
 } from "lucide-react";
 
 const PHONE_DISPLAY = "480-227-7319";
@@ -241,10 +242,12 @@ export default function Home() {
 
             {/* Video card */}
             <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
-              <p className="text-sm text-brand-white/70">
-                <span className="en">Watch a quick intro and see recent work.</span>
-                <span className="es">Mira una breve presentación y trabajos recientes.</span>
-              </p>
+            <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand-white/70">
+            <Play className="h-4 w-4 text-brand-green" />
+            <span className="en">Watch a quick intro & recent work</span>
+            <span className="es">Mira una breve presentación y trabajos recientes</span>
+          </div>
+
 
               <div className="flex md:justify-end">
                 <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
