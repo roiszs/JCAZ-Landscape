@@ -47,7 +47,7 @@ export function HeroVideo({ mp4Src, posterSrc }: Props) {
             className="absolute inset-0 flex items-center justify-center bg-brand-black/30 hover:bg-brand-black/20"
             aria-label="Play introduction video"
           >
-            <span className="rounded-full bg-brand-gold px-6 py-3 font-extrabold text-brand-black">
+            <span className="rounded-full bg-brand-green px-6 py-3 font-extrabold text-brand-black">
               ▶ Play Video
             </span>
           </button>

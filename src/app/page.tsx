@@ -145,7 +145,7 @@ export default function Home() {
 
               <a
                 href="#contact"
-                className="rounded-xl bg-brand-gold px-3 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
+                className="rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
               >
                 <span className="en">Free Estimate</span>
                 <span className="es">Cotización Gratis</span>
@@ -180,7 +180,7 @@ export default function Home() {
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
                   href="#contact"
-                  className="rounded-xl bg-brand-gold px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90"
+                  className="rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90"
                 >
                   <span className="en">Get a Free Estimate</span>
                   <span className="es">Pedir Cotización</span>
@@ -273,7 +273,7 @@ export default function Home() {
                 <div className="mt-4 flex items-center justify-between">
                   <a
                     href="#contact"
-                    className="text-sm font-extrabold text-brand-gold hover:text-brand-gold/90"
+                    className="text-sm font-extrabold text-brand-green hover:text-brand-gold/90"
                   >
                     <span className="en">Get Estimate →</span>
                     <span className="es">Cotizar →</span>
@@ -313,7 +313,7 @@ export default function Home() {
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl border border-brand-white/10 bg-brand-black/40 p-5">
-                <p className="font-extrabold text-brand-gold">
+                <p className="font-extrabold text-brand-green">
                   <span className="en">Mission</span>
                   <span className="es">Misión</span>
                 </p>
@@ -328,7 +328,7 @@ export default function Home() {
               </div>
 
               <div className="rounded-2xl border border-brand-white/10 bg-brand-black/40 p-5">
-                <p className="font-extrabold text-brand-gold">
+                <p className="font-extrabold text-brand-green">
                   <span className="en">Vision</span>
                   <span className="es">Visión</span>
                 </p>
@@ -358,7 +358,7 @@ export default function Home() {
                 key={step.en}
                 className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5"
               >
-                <p className="text-brand-gold font-extrabold">Step {i + 1}</p>
+                <p className="text-brand-green font-extrabold">Step {i + 1}</p>
                 <p className="mt-2 font-extrabold">
                   <span className="en">{step.en}</span>
                   <span className="es">{step.es}</span>
@@ -391,7 +391,7 @@ export default function Home() {
                 href={INSTAGRAM}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-xl bg-brand-gold px-4 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
+                className="rounded-xl bg-brand-green px-4 py-2 text-sm font-extrabold text-brand-black hover:bg-brand-gold/90"
               >
                 Instagram
               </a>
@@ -454,13 +454,13 @@ export default function Home() {
                 <div className="mt-5 space-y-2 text-sm text-brand-white/80">
                   <p>
                     <span className="font-extrabold text-brand-white">Phone:</span>{" "}
-                    <a className="text-brand-gold hover:text-brand-gold/90" href={PHONE_HREF}>
+                    <a className="text-brand-green hover:text-brand-gold/90" href={PHONE_HREF}>
                       {PHONE_DISPLAY}
                     </a>
                   </p>
                   <p>
                     <span className="font-extrabold text-brand-white">Email:</span>{" "}
-                    <a className="text-brand-gold hover:text-brand-gold/90" href={EMAIL_HREF}>
+                    <a className="text-brand-green hover:text-brand-gold/90" href={EMAIL_HREF}>
                       {EMAIL}
                     </a>
                   </p>
@@ -515,7 +515,7 @@ export default function Home() {
                   placeholder="Project details / Detalles del proyecto"
                 />
                 <button
-                  className="rounded-xl bg-brand-gold px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90 md:col-span-2"
+                  className="rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-black hover:bg-brand-gold/90 md:col-span-2"
                   type="button"
                 >
                   <span className="en">Submit</span>
