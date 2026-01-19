@@ -104,17 +104,16 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-brand-black text-brand-white">
       {/* Background accents */}
       <div className="pointer-events-none absolute inset-0 z-0">
-  {/* Glow blobs (top / mid / bottom) */}
-  <div className="absolute -top-48 -left-48 h-[620px] w-[620px] rotate-12 rounded-full bg-brand-green/26 blur-3xl" />
-  <div className="absolute top-[30%] -right-56 h-[720px] w-[720px] -rotate-12 rounded-full bg-brand-green/22 blur-3xl" />
-  <div className="absolute bottom-[-260px] left-[10%] h-[760px] w-[760px] rotate-6 rounded-full bg-brand-green/18 blur-3xl" />
+  {/* Top glow */}
+  <div className="absolute -top-56 -left-56 h-[800px] w-[800px] rounded-full bg-brand-green/30 blur-3xl" />
 
-  {/* Subtle diagonal rays */}
-  <div className="absolute inset-0 opacity-[0.10] [background:repeating-linear-gradient(115deg,rgba(15,99,0,0.35)_0px,rgba(15,99,0,0.35)_1px,transparent_1px,transparent_90px)]" />
+  {/* Mid glow */}
+  <div className="absolute top-[20%] -right-64 h-[900px] w-[900px] rounded-full bg-brand-green/22 blur-3xl" />
 
-  {/* Soft vignette to keep it premium (dark edges) */}
-  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.15)_0%,rgba(0,0,0,0.65)_70%,rgba(0,0,0,0.9)_100%)]" />
+  {/* Bottom glow */}
+  <div className="absolute -bottom-72 left-[15%] h-[1000px] w-[1000px] rounded-full bg-brand-green/18 blur-3xl" />
 </div>
+
 
 
       {/* Content */}
