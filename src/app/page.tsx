@@ -103,21 +103,19 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-brand-black text-brand-white">
       {/* Background accents */}
-    <div className="pointer-events-none absolute inset-0 -z-10">
-      {/* Green diagonal glow */}
-      <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rotate-12 rounded-full bg-brand-green/20 blur-3xl" />
-      <div className="absolute top-1/3 -right-40 h-[600px] w-[600px] -rotate-12 rounded-full bg-brand-green/15 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rotate-12 rounded-full bg-brand-green/25 blur-3xl" />
+        <div className="absolute top-1/3 -right-40 h-[600px] w-[600px] -rotate-12 rounded-full bg-brand-green/20 blur-3xl" />
+      </div>
 
-      {/* Subtle noise overlay (optional but premium) */}
-      <div className="absolute inset-0 bg-[radial-gradient(transparent_1px,_rgba(0,0,0,0.6)_1px)] bg-[size:4px_4px] opacity-20" />
-    </div>
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Language toggle (no JS). Unchecked = EN, Checked = ES */}
+        <input id="lang-toggle" type="checkbox" className="peer sr-only" />
 
-      {/* Language toggle (no JS). Unchecked = EN, Checked = ES */}
-      <input id="lang-toggle" type="checkbox" className="peer sr-only" />
-
-      <div className="peer-checked:[&_.en]:hidden peer-checked:[&_.es]:block [&_.es]:hidden">
-        {/* HEADER */}
-        <header className="sticky top-0 z-50 border-b border-brand-white/10 bg-brand-black/80 backdrop-blur">
+        <div className="peer-checked:[&_.en]:hidden peer-checked:[&_.es]:block [&_.es]:hidden">
+          {/* HEADER */}
+          <header className="sticky top-0 z-50 border-b border-brand-white/10 bg-brand-black/80 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
             <a href="#" className="flex items-center gap-3">
               <Image
@@ -674,6 +672,7 @@ export default function Home() {
             </div>
           </div>
         </footer>
+      </div>
       </div>
     </main>
   );
