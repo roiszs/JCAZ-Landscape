@@ -101,7 +101,17 @@ const serviceIconByKey: Record<string, any> = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-brand-black text-brand-white">
+    <main className="relative min-h-screen overflow-hidden bg-brand-black text-brand-white">
+      {/* Background accents */}
+    <div className="pointer-events-none absolute inset-0 -z-10">
+      {/* Green diagonal glow */}
+      <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rotate-12 rounded-full bg-brand-green/20 blur-3xl" />
+      <div className="absolute top-1/3 -right-40 h-[600px] w-[600px] -rotate-12 rounded-full bg-brand-green/15 blur-3xl" />
+
+      {/* Subtle noise overlay (optional but premium) */}
+      <div className="absolute inset-0 bg-[radial-gradient(transparent_1px,_rgba(0,0,0,0.6)_1px)] bg-[size:4px_4px] opacity-20" />
+    </div>
+
       {/* Language toggle (no JS). Unchecked = EN, Checked = ES */}
       <input id="lang-toggle" type="checkbox" className="peer sr-only" />
 
