@@ -101,21 +101,41 @@ const serviceIconByKey: Record<string, any> = {
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-brand-black text-brand-white">
-      {/* Background accents */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-  {/* Top glow */}
-  <div className="absolute -top-56 -left-56 h-[800px] w-[800px] rounded-full bg-brand-green/30 blur-3xl" />
+    <main
+  className="relative min-h-screen text-brand-white bg-brand-black"
+  style={{
+    backgroundImage: `
+      /* Diagonal rays (very subtle) */
+      repeating-linear-gradient(
+        115deg,
+        rgba(15, 99, 0, 0.12) 0px,
+        rgba(15, 99, 0, 0.12) 1px,
+        transparent 1px,
+        transparent 110px
+      ),
 
-  {/* Mid glow */}
-  <div className="absolute top-[20%] -right-64 h-[900px] w-[900px] rounded-full bg-brand-green/22 blur-3xl" />
+      /* Top-left glow */
+      radial-gradient(900px circle at 10% 10%, rgba(15, 99, 0, 0.40), transparent 62%),
 
-  {/* Bottom glow */}
-  <div className="absolute -bottom-72 left-[15%] h-[1000px] w-[1000px] rounded-full bg-brand-green/18 blur-3xl" />
-</div>
+      /* Top-right glow */
+      radial-gradient(850px circle at 92% 12%, rgba(15, 99, 0, 0.26), transparent 62%),
 
+      /* Mid-left glow */
+      radial-gradient(900px circle at 18% 55%, rgba(15, 99, 0, 0.22), transparent 66%),
 
+      /* Mid-right glow */
+      radial-gradient(950px circle at 92% 58%, rgba(15, 99, 0, 0.20), transparent 66%),
 
+      /* Bottom-left glow */
+      radial-gradient(1100px circle at 22% 115%, rgba(15, 99, 0, 0.22), transparent 68%),
+
+      /* Bottom-right glow (deeper scroll) */
+      radial-gradient(1200px circle at 85% 175%, rgba(15, 99, 0, 0.18), transparent 70%)
+    `,
+  }}
+>
+
+    <div className="relative z-10">
       {/* Content */}
       <div className="relative z-10">
         {/* Language toggle (no JS). Unchecked = EN, Checked = ES */}
@@ -682,6 +702,8 @@ export default function Home() {
         </footer>
       </div>
       </div>
+      </div>
     </main>
+
   );
 }
