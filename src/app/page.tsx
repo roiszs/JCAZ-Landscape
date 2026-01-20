@@ -169,11 +169,6 @@ export default function Home() {
                 <span className="en">Process</span>
                 <span className="es">Proceso</span>
               </a>
-              <a className="hover:text-brand-white" href="/gallery">
-                  <span className="en">Gallery</span>
-                  <span className="es">Galería</span>
-                </a>
-
               <a className="hover:text-brand-white" href="#projects">
                 <span className="en">Projects</span>
                 <span className="es">Proyectos</span>
