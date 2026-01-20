@@ -16,17 +16,17 @@ const PHOTOS = [
   {
     src: "/images/gallery/28.png",
     alt: "Artificial turf installation",
-    category: "Turf",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/29.png",
     alt: "Outdoor living / fire pit area",
-    category: "Outdoor Living",
+    category: "Travertine",
   },
   {
     src: "/images/gallery/30.png",
     alt: "Hardscape walkway",
-    category: "Hardscaping",
+    category: "Travertine",
   },
   {
     src: "/images/gallery/31.png",
@@ -36,122 +36,122 @@ const PHOTOS = [
   {
     src: "/images/gallery/32.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/02.png",
     alt: "Paver patio project in Phoenix",
-    category: "Pavers",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/03.png",
     alt: "Paver patio project in Phoenix",
-    category: "Pavers",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/04.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Turf",
   },
   {
     src: "/images/gallery/05.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Pavers",
   },
   {
     src: "/images/gallery/06.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Hardscaping",
   },
   {
     src: "/images/gallery/07.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/08.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Turf",
   },
   {
     src: "/images/gallery/09.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/10.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Pavers",
   },
   {
     src: "/images/gallery/11.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Turf",
   },
   {
     src: "/images/gallery/12.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Pavers",
   },
   {
     src: "/images/gallery/13.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Turf",
   },
   {
     src: "/images/gallery/14.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/15.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Pavers",
   },
   {
     src: "/images/gallery/16.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Pavers",
   },
   {
     src: "/images/gallery/17.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Turf",
   },
   {
     src: "/images/gallery/18.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Hardscaping",
   },
   {
     src: "/images/gallery/19.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Outdoor Living",
   },
   {
     src: "/images/gallery/20.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Turf",
   },
   {
     src: "/images/gallery/21.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Pavers",
   },
   {
     src: "/images/gallery/22.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Turf",
   },
   {
     src: "/images/gallery/23.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Hardscaping",
   },
   {
     src: "/images/gallery/24.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Hardscaping",
   },
   {
     src: "/images/gallery/25.png",
@@ -161,12 +161,12 @@ const PHOTOS = [
   {
     src: "/images/gallery/26.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Pavers",
   },
   {
     src: "/images/gallery/27.png",
     alt: "Landscape cleanup / maintenance",
-    category: "Maintenance",
+    category: "Outdoor Living",
   },
 ];
 
