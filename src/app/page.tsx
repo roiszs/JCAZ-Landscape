@@ -194,6 +194,13 @@ export default function Home() {
                 <span className="en">ES</span>
                 <span className="es">EN</span>
               </label>
+              <a
+                    href="/gallery"
+                    className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                  >
+                    <Images className="h-4 w-4 text-brand-green" />
+                    <span className="hidden sm:inline">Gallery</span>
+                  </a>
 
               <a
                 href={PHONE_HREF}
