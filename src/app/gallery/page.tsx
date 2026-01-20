@@ -64,9 +64,6 @@ export default function GalleryPage() {
           <GalleryClient photos={PHOTOS} />
         </div>
 
-        <p className="mt-10 text-xs text-brand-white/60">
-          Tip: keep image filenames simple (01.jpg, 02.jpg, etc.) and upload optimized photos for faster loading.
-        </p>
       </div>
     </main>
   );
