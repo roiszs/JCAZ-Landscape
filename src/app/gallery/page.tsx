@@ -46,11 +46,6 @@ const PHOTOS = [
   { src: "/images/gallery/25.png", alt: "Landscape cleanup / maintenance", category: "Maintenance" },
   { src: "/images/gallery/26.png", alt: "Paver patio project in Phoenix", category: "Pavers" },
   { src: "/images/gallery/27.png", alt: "Outdoor living / fire pit area", category: "Outdoor Living" },
-  { src: "/images/gallery/28.png", alt: "Outdoor living / fire pit area", category: "Outdoor Living" },
-  { src: "/images/gallery/29.png", alt: "Travertine finish patio", category: "Travertine" },
-  { src: "/images/gallery/30.png", alt: "Travertine finish patio", category: "Travertine" },
-  { src: "/images/gallery/31.png", alt: "Travertine finish patio", category: "Travertine" },
-  { src: "/images/gallery/32.png", alt: "Outdoor living / fire pit area", category: "Outdoor Living" },
 ];
 
 export default function GalleryPage() {
