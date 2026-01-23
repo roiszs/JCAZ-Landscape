@@ -70,7 +70,7 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
       <div className="columns-1 gap-5 space-y-5 sm:columns-2 md:columns-3">
         {filtered.map((p, idx) => (
           <button
-            key={p.src}
+            key={`${p.src}-${idx}`}
             type="button"
             onClick={() => open(idx)}
             className="group relative w-full break-inside-avoid overflow-hidden rounded-3xl border border-brand-white/10 bg-brand-white/5 text-left shadow-[0_0_0_1px_rgba(255,255,255,0.03)] transition hover:border-brand-white/20 hover:shadow-[0_0_0_1px_rgba(15,99,0,0.25),0_20px_60px_rgba(0,0,0,0.45)]"
