@@ -1,6 +1,8 @@
 import Link from "next/link";
 import GalleryClient from "./GalleryClient";
 import BrandBackground from "@/components/layout/BrandBackground";
+import { ArrowLeft } from "lucide-react";
+
 
 export const metadata = {
   title: "Gallery | JCAZ Landscape",
@@ -56,12 +58,17 @@ export default function GalleryPage() {
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="flex items-center gap-3">
-              <Link
-                href="/"
-                className="rounded-xl border border-brand-white/15 bg-brand-black/30 px-3 py-2 text-sm font-semibold text-brand-white/90 backdrop-blur hover:border-brand-white/30"
-              >
-                ← Back Home
-              </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15
+                        bg-brand-black/40 px-3 py-2 text-sm font-semibold
+                        text-brand-white/90 backdrop-blur
+                        transition hover:border-brand-white/30 hover:bg-brand-white/5"
+            >
+              <ArrowLeft className="h-4 w-4 text-brand-green" />
+              Back Home
+            </Link>
+
 
               <span className="rounded-full border border-brand-white/10 bg-brand-white/5 px-3 py-1 text-xs text-brand-white/70">
                 Curated Work • JCAZ
