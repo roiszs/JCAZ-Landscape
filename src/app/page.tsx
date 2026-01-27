@@ -104,9 +104,10 @@ const serviceIconByKey: Record<string, any> = {
   maintenance: Wrench,
 };
 
-const [openProject, setOpenProject] = useState<number | null>(null);
 
 export default function Home() {
+
+  const [openProject, setOpenProject] = useState<number | null>(null);
   return (
     <main
   className="relative min-h-screen text-brand-white bg-brand-black"
