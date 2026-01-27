@@ -220,123 +220,141 @@ export default function Home() {
         </header>
 
         {/* HERO */}
-        <section className="mx-auto max-w-6xl px-4 py-12">
-          <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
-            <div>
-              <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
-                <MapPin className="h-4 w-4 text-brand-green" />
-                <span className="en">Phoenix & Valley-Wide • Licensed / Insured • Fast Scheduling</span>
-                <span className="es">Phoenix y todo el Valle • Licenciados / Asegurados • Agenda Rápida</span>
-              </p>
+        {/* HERO */}
+<section className="mx-auto max-w-6xl px-4 py-12">
+  <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
+    <div>
+      <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
+        <MapPin className="h-4 w-4 text-brand-green" />
+        <span className="en">Phoenix & Valley-Wide • Licensed / Insured • Fast Scheduling</span>
+        <span className="es">Phoenix y todo el Valle • Licenciados / Asegurados • Agenda Rápida</span>
+      </p>
 
-              <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
-                <span className="en">Hardscaping & Outdoor Living Built to Last.</span>
-                <span className="es">Hardscape y Exteriores Hechos Para Durar.</span>
-              </h1>
+      <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
+        <span className="en">Hardscaping & Outdoor Living Built to Last.</span>
+        <span className="es">Hardscape y Exteriores Hechos Para Durar.</span>
+      </h1>
 
-              <p className="mt-4 text-brand-white/80">
-                <span className="en">
-                  From pavers and turf to pergolas and fire pits—clear estimates, clean execution, and results you’ll love.
-                </span>
-                <span className="es">
-                  Desde adoquín y pasto artificial hasta pérgolas y fogateros—cotizaciones claras, buen trabajo y resultados que te van a encantar.
-                </span>
-              </p>
+      <p className="mt-4 text-brand-white/80">
+        <span className="en">
+          From pavers and turf to pergolas and fire pits—clear estimates, clean execution, and results you’ll love.
+        </span>
+        <span className="es">
+          Desde adoquín y pasto artificial hasta pérgolas y fogateros—cotizaciones claras, buen trabajo y resultados que te van a encantar.
+        </span>
+      </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
-                >
-                  <ArrowUpRight className="h-4 w-4 text-brand-white" />
-                  <span className="en">Get a Free Estimate</span>
-                  <span className="es">Pedir Cotización</span>
-                </a>
-
-                <a
-                  href={PHONE_HREF}
-                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
-                >
-                  <PhoneCall className="h-4 w-4 text-brand-green" />
-                  <span className="en">Call {PHONE_DISPLAY}</span>
-                  <span className="es">Llama {PHONE_DISPLAY}</span>
-                </a>
-              </div>
-
-              <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
-  {[
-    { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
-    { en: "Insured", es: "Asegurados", icon: ShieldCheck },
-    { en: "Warranty", es: "Garantía", icon: Clock },
-    { en: "Financing Available", es: "Financiamiento", icon: FileText },
-  ].map((t) => {
-    const Ico = t.icon;
-    return (
-      <div
-        key={t.en}
-        className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
-      >
-        <Ico className="h-4 w-4 text-brand-green" />
-        <div className="leading-tight">
-          <span className="en">{t.en}</span>
-          <span className="es">{t.es}</span>
-        </div>
+      {/* Gallery button (mobile-first, premium placement) */}
+      <div className="mt-5 md:hidden">
+        <a
+          href="/gallery"
+          className="inline-flex items-center gap-2 rounded-xl border border-brand-green/30 bg-brand-black/40 px-4 py-2
+                     text-sm font-semibold text-brand-white backdrop-blur
+                     hover:border-brand-green hover:bg-brand-white/5"
+        >
+          <Images className="h-4 w-4 text-brand-green" />
+          <span className="en">View Our Work</span>
+          <span className="es">Ver Trabajos</span>
+        </a>
       </div>
-    );
-  })}
 
-  {/* Gallery button (mobile-first) */}
-  <Link
-    href="/gallery"
-    className="flex items-center justify-center gap-2 rounded-xl
-               border border-brand-green/40 bg-brand-black/40 p-3
-               font-extrabold text-brand-white
-               hover:border-brand-green hover:bg-brand-white/5
-               md:hidden"
-  >
-    <Images className="h-4 w-4 text-brand-green" />
-    Gallery
-  </Link>
-</div>
+      {/* Primary actions */}
+      <div className="mt-6 flex flex-wrap gap-3">
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
+        >
+          <ArrowUpRight className="h-4 w-4 text-brand-white" />
+          <span className="en">Get a Free Estimate</span>
+          <span className="es">Pedir Cotización</span>
+        </a>
 
-            </div>
+        <a
+          href={PHONE_HREF}
+          className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
+        >
+          <PhoneCall className="h-4 w-4 text-brand-green" />
+          <span className="en">Call {PHONE_DISPLAY}</span>
+          <span className="es">Llama {PHONE_DISPLAY}</span>
+        </a>
+      </div>
 
-            {/* Video card */}
-            <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
-            <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-brand-white/70">
-            <Play className="h-4 w-4 text-brand-green" />
-            <span className="en">Watch a quick intro & recent work</span>
-            <span className="es">Mira una breve presentación y trabajos recientes</span>
-          </div>
-
-
-              <div className="flex md:justify-end">
-                <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
-              </div>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                <a
-                  href={INSTAGRAM}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-                >
-                  <Instagram className="h-4 w-4 text-brand-green" />
-                  Instagram
-                </a>
-                <a
-                  href={FACEBOOK}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-                >
-                  <Facebook className="h-4 w-4 text-brand-green" />
-                  Facebook
-                </a>
+      {/* Trust badges */}
+      <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
+        {[
+          { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
+          { en: "Insured", es: "Asegurados", icon: ShieldCheck },
+          { en: "Warranty", es: "Garantía", icon: Clock },
+          { en: "Financing Available", es: "Financiamiento", icon: FileText },
+        ].map((t) => {
+          const Ico = t.icon;
+          return (
+            <div
+              key={t.en}
+              className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
+            >
+              <Ico className="h-4 w-4 text-brand-green" />
+              <div className="leading-tight">
+                <span className="en">{t.en}</span>
+                <span className="es">{t.es}</span>
               </div>
             </div>
-          </div>
-        </section>
+          );
+        })}
+      </div>
+    </div>
+
+    {/* Video card */}
+    <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
+      <p className="text-sm text-brand-white/70">
+        <span className="en">Watch a quick intro and see recent work.</span>
+        <span className="es">Mira una breve presentación y trabajos recientes.</span>
+      </p>
+
+      <div className="flex md:justify-end">
+        <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <a
+          href={INSTAGRAM}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+        >
+          <span className="inline-flex items-center gap-2">
+            <Instagram className="h-4 w-4 text-brand-green" />
+            Instagram
+          </span>
+        </a>
+
+        <a
+          href={FACEBOOK}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+        >
+          <span className="inline-flex items-center gap-2">
+            <Facebook className="h-4 w-4 text-brand-green" />
+            Facebook
+          </span>
+        </a>
+
+        {/* Desktop-only CTA to Gallery (optional, premium) */}
+        <Link
+          href="/gallery"
+          className="hidden rounded-xl bg-brand-black/40 px-3 py-2 text-sm font-semibold text-brand-white/90
+                     border border-brand-green/25 hover:border-brand-green hover:bg-brand-white/5 md:inline-flex"
+        >
+          <span className="inline-flex items-center gap-2">
+            <Images className="h-4 w-4 text-brand-green" />
+            Gallery
+          </span>
+        </Link>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* SERVICES */}
         <section id="services" className="mx-auto max-w-6xl px-4 py-10">
