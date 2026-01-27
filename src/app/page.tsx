@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { X } from "lucide-react";
+import { useState } from "react";
 import { HeroVideo } from "../components/sections/HeroVideo";
 import {
   Instagram,
@@ -99,6 +101,8 @@ const serviceIconByKey: Record<string, any> = {
   outdoorliving: Flame,
   maintenance: Wrench,
 };
+
+const [openProject, setOpenProject] = useState<number | null>(null);
 
 export default function Home() {
   return (
@@ -480,118 +484,135 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PROCESS */}
-        <section id="process" className="mx-auto max-w-6xl px-4 py-10">
-          <div className="flex items-center gap-2">
-            <FileText className="h-6 w-6 text-brand-green" />
-            <h2 className="text-2xl font-extrabold">
-              <span className="en">Our Process</span>
-              <span className="es">Nuestro Proceso</span>
-            </h2>
-          </div>
-
-          <div className="mt-6 grid gap-4 md:grid-cols-4">
-            {processSteps.map((step, i) => {
-              const Ico = step.icon;
-              return (
-                <div
-                  key={step.en}
-                  className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-5"
-                >
-                  <div className="flex items-center justify-between">
-                    <p className="font-extrabold text-brand-white/90">
-                      <span className="en">Step {i + 1}</span>
-                      <span className="es">Paso {i + 1}</span>
-                    </p>
-                    <Ico className="h-5 w-5 text-brand-green" />
-                  </div>
-
-                  <p className="mt-2 font-extrabold">
-                    <span className="en">{step.en}</span>
-                    <span className="es">{step.es}</span>
-                  </p>
-
-                  <p className="mt-2 text-sm text-brand-white/70">
-                    <span className="en">Fast communication and clear next steps.</span>
-                    <span className="es">Comunicación rápida y pasos claros.</span>
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
         {/* PROJECTS */}
-        <section id="projects" className="mx-auto max-w-6xl px-4 py-10">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <div className="flex items-center gap-2">
-                <Images className="h-6 w-6 text-brand-green" />
-                <h2 className="text-2xl font-extrabold">
-                  <span className="en">Recent Projects</span>
-                  <span className="es">Proyectos Recientes</span>
-                </h2>
-              </div>
+<section id="projects" className="mx-auto max-w-6xl px-4 py-10">
+  <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <div>
+      <div className="flex items-center gap-2">
+        <Images className="h-6 w-6 text-brand-green" />
+        <h2 className="text-2xl font-extrabold">
+          <span className="en">Recent Projects</span>
+          <span className="es">Proyectos Recientes</span>
+        </h2>
+      </div>
 
-              <p className="mt-2 text-brand-white/75">
-                <span className="en">Explore more work on Instagram & Facebook.</span>
-                <span className="es">Mira más trabajos en Instagram y Facebook.</span>
-              </p>
-            </div>
+      <p className="mt-2 text-brand-white/75">
+        <span className="en">Explore more work on Instagram & Facebook.</span>
+        <span className="es">Mira más trabajos en Instagram y Facebook.</span>
+      </p>
+    </div>
 
-            <div className="flex gap-2">
-              <a
-                href={INSTAGRAM}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-4 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90"
-              >
-                <Instagram className="h-4 w-4 text-brand-white" />
-                Instagram
-              </a>
-              <a
-                href={FACEBOOK}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-4 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
-              >
-                <Facebook className="h-4 w-4 text-brand-green" />
-                Facebook
-              </a>
-            </div>
+    <div className="flex gap-2">
+      <a
+        href={INSTAGRAM}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-4 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90"
+      >
+        <Instagram className="h-4 w-4 text-brand-white" />
+        Instagram
+      </a>
+
+      <a
+        href={FACEBOOK}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-4 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
+      >
+        <Facebook className="h-4 w-4 text-brand-green" />
+        Facebook
+      </a>
+    </div>
+  </div>
+
+  <div className="mt-6 grid gap-4 md:grid-cols-3">
+    {[1, 2, 3, 4, 5, 6].map((n) => (
+      <button
+        key={n}
+        type="button"
+        onClick={() => setOpenProject(n)}
+        className="group relative w-full overflow-hidden rounded-2xl border border-brand-white/10 bg-brand-white/5 text-left transition-transform duration-300 hover:-translate-y-1 hover:border-brand-white/20"
+      >
+        <div className="relative h-56 md:h-44">
+          <Image
+            src={`/images/projects/project-${String(n).padStart(2, "0")}.jpg`}
+            alt={`Project ${n}`}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+
+          {/* Overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-90" />
+
+          {/* Pill */}
+          <div className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-brand-white/15 bg-brand-black/40 px-3 py-1 text-xs text-brand-white/90 backdrop-blur">
+            <span className="h-2 w-2 rounded-full bg-brand-green" />
+            <span className="en">Recent Work</span>
+            <span className="es">Trabajo Reciente</span>
           </div>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div
-                key={n}
-                className="overflow-hidden rounded-2xl border border-brand-white/10 bg-brand-white/5"
-              >
-                <div className="relative h-44">
-                  <Image
-                    src={`/images/projects/project-${String(n).padStart(2, "0")}.jpg`}
-                    alt={`Project ${n}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-
-                <div className="p-4">
-                  <p className="flex items-center gap-2 font-extrabold">
-                    <ArrowUpRight className="h-4 w-4 text-brand-green" />
-                    <span className="en">Project {n}</span>
-                    <span className="es">Proyecto {n}</span>
-                  </p>
-                  <p className="mt-1 text-sm text-brand-white/70">
-                    <span className="en">Phoenix Area • Outdoor Upgrade</span>
-                    <span className="es">Área de Phoenix • Mejora Exterior</span>
-                  </p>
-                </div>
-              </div>
-            ))}
+          {/* Optional: tiny hint icon bottom-right (no link, still same click) */}
+          <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-xl border border-brand-white/15 bg-brand-black/40 px-3 py-2 text-xs font-extrabold text-brand-white/90 backdrop-blur">
+            <span className="en">Open</span>
+            <span className="es">Abrir</span>
           </div>
-        </section>
+        </div>
+      </button>
+    ))}
+  </div>
+</section>
+
+{/* Lightbox */}
+{openProject !== null && (
+  <div
+    className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+    role="dialog"
+    aria-modal="true"
+  >
+    <button
+      type="button"
+      onClick={() => setOpenProject(null)}
+      className="absolute right-4 top-4 inline-flex items-center gap-2 rounded-xl border border-brand-white/15 bg-brand-black/40 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+    >
+      <X className="h-4 w-4 text-brand-green" />
+      Close
+    </button>
+
+    <div className="w-full max-w-4xl overflow-hidden rounded-2xl border border-brand-white/10 bg-brand-black/60">
+      <Image
+        src={`/images/projects/project-${String(openProject).padStart(2, "0")}.jpg`}
+        alt={`Project ${openProject}`}
+        width={1600}
+        height={1200}
+        className="h-auto w-full object-contain"
+        priority
+      />
+
+      <div className="border-t border-brand-white/10 p-4">
+        <p className="text-sm font-extrabold text-brand-white">
+          <span className="en">Recent Project</span>
+          <span className="es">Proyecto Reciente</span>
+        </p>
+        <p className="mt-1 text-sm text-brand-white/70">
+          <span className="en">Hardscaping & Outdoor Living</span>
+          <span className="es">Hardscape y Áreas Exteriores</span>
+        </p>
+
+        <a
+          href="/gallery"
+          className="mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-brand-green hover:underline"
+        >
+          <span className="en">View full gallery →</span>
+          <span className="es">Ver galería completa →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
 
         {/* CONTACT */}
         <section id="contact" className="mx-auto max-w-6xl px-4 py-14">
