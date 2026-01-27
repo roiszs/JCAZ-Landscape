@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { HeroVideo } from "../components/sections/HeroVideo";
 import {
   Instagram,
@@ -263,24 +264,41 @@ export default function Home() {
               </div>
 
               <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
-                {[
-                  { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
-                  { en: "Insured", es: "Asegurados", icon: ShieldCheck },
-                  { en: "Warranty", es: "Garantía", icon: Clock },
-                  { en: "Financing Available", es: "Financiamiento", icon: FileText },
-                ].map((t) => {
-                  const Ico = t.icon;
-                  return (
-                    <div key={t.en} className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3">
-                      <Ico className="h-4 w-4 text-brand-green" />
-                      <div className="leading-tight">
-                        <span className="en">{t.en}</span>
-                        <span className="es">{t.es}</span>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+  {[
+    { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
+    { en: "Insured", es: "Asegurados", icon: ShieldCheck },
+    { en: "Warranty", es: "Garantía", icon: Clock },
+    { en: "Financing Available", es: "Financiamiento", icon: FileText },
+  ].map((t) => {
+    const Ico = t.icon;
+    return (
+      <div
+        key={t.en}
+        className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
+      >
+        <Ico className="h-4 w-4 text-brand-green" />
+        <div className="leading-tight">
+          <span className="en">{t.en}</span>
+          <span className="es">{t.es}</span>
+        </div>
+      </div>
+    );
+  })}
+
+  {/* Gallery button (mobile-first) */}
+  <Link
+    href="/gallery"
+    className="flex items-center justify-center gap-2 rounded-xl
+               border border-brand-green/40 bg-brand-black/40 p-3
+               font-extrabold text-brand-white
+               hover:border-brand-green hover:bg-brand-white/5
+               md:hidden"
+  >
+    <Images className="h-4 w-4 text-brand-green" />
+    Gallery
+  </Link>
+</div>
+
             </div>
 
             {/* Video card */}
