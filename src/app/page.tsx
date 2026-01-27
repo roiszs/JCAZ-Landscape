@@ -244,20 +244,6 @@ export default function Home() {
         </span>
       </p>
 
-      {/* Gallery button (mobile-first, premium placement) */}
-      <div className="mt-5 md:hidden">
-        <a
-          href="/gallery"
-          className="inline-flex items-center gap-2 rounded-xl border border-brand-green/30 bg-brand-black/40 px-4 py-2
-                     text-sm font-semibold text-brand-white backdrop-blur
-                     hover:border-brand-green hover:bg-brand-white/5"
-        >
-          <Images className="h-4 w-4 text-brand-green" />
-          <span className="en">View Our Work</span>
-          <span className="es">Ver Trabajos</span>
-        </a>
-      </div>
-
       {/* Primary actions */}
       <div className="mt-6 flex flex-wrap gap-3">
         <a
@@ -277,6 +263,20 @@ export default function Home() {
           <span className="en">Call {PHONE_DISPLAY}</span>
           <span className="es">Llama {PHONE_DISPLAY}</span>
         </a>
+
+         {/* Gallery button (mobile-first, premium placement) */}
+      <div className="mt-5 md:hidden">
+        <a
+          href="/gallery"
+          className="inline-flex items-center gap-2 rounded-xl border border-brand-green/30 bg-brand-black/40 px-4 py-2
+                     text-sm font-semibold text-brand-white backdrop-blur
+                     hover:border-brand-green hover:bg-brand-white/5"
+        >
+          <Images className="h-4 w-4 text-brand-green" />
+          <span className="en">Gallery</span>
+          <span className="es">Galeria</span>
+        </a>
+      </div>
       </div>
 
       {/* Trust badges */}
@@ -339,18 +339,6 @@ export default function Home() {
             Facebook
           </span>
         </a>
-
-        {/* Desktop-only CTA to Gallery (optional, premium) */}
-        <Link
-          href="/gallery"
-          className="hidden rounded-xl bg-brand-black/40 px-3 py-2 text-sm font-semibold text-brand-white/90
-                     border border-brand-green/25 hover:border-brand-green hover:bg-brand-white/5 md:inline-flex"
-        >
-          <span className="inline-flex items-center gap-2">
-            <Images className="h-4 w-4 text-brand-green" />
-            Gallery
-          </span>
-        </Link>
       </div>
     </div>
   </div>
