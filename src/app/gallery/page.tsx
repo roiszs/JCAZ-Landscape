@@ -5,8 +5,8 @@ import { ArrowLeft } from "lucide-react";
 
 
 export const metadata = {
-  title: "Gallery | JCAZ Landscape",
-  description: "Recent landscape and hardscape projects by JCAZ Landscape.",
+  title: "Gallery | JC Arizona Landscape",
+  description: "Recent landscape and hardscape projects by JC Arizona Landscape.",
 };
 
 const LOCATION = "Phoenix, AZ";
@@ -71,13 +71,13 @@ export default function GalleryPage() {
 
 
               <span className="rounded-full border border-brand-white/10 bg-brand-white/5 px-3 py-1 text-xs text-brand-white/70">
-                Curated Work • JCAZ
+                Curated Work • JC Arizona
               </span>
             </div>
 
             <h1 className="mt-4 text-3xl font-extrabold md:text-4xl">Gallery</h1>
             <p className="mt-2 max-w-2xl text-brand-white/75">
-              Recent projects by JCAZ. Tap any photo to view full size. Use filters to browse by service type.
+              Recent projects by JC Arizona. Tap any photo to view full size. Use filters to browse by service type.
             </p>
           </div>
 
@@ -116,7 +116,7 @@ export default function GalleryPage() {
       <footer className="border-t border-brand-white/10">
         <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-brand-white/75">
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} JCAZ Landscape LLC</p>
+            <p>© {new Date().getFullYear()} JC Arizona Landscape LLC</p>
             <p className="text-brand-white/60">
               {LOCATION} • {PHONE_DISPLAY} • {EMAIL}
             </p>

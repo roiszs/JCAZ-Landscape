@@ -408,8 +408,8 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-6 w-6 text-brand-green" />
               <h2 className="text-2xl font-extrabold">
-                <span className="en">About JCAZ</span>
-                <span className="es">Sobre JCAZ</span>
+                <span className="en">About JC Arizona</span>
+                <span className="es">Sobre JC Arizona</span>
               </h2>
             </div>
 
@@ -703,7 +703,7 @@ export default function Home() {
         <footer className="border-t border-brand-white/10">
           <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-brand-white/75">
             <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-              <p>© {new Date().getFullYear()} JCAZ Landscape LLC</p>
+              <p>© {new Date().getFullYear()} JC Arizona Landscape LLC</p>
               <p className="text-brand-white/60">
                 {LOCATION} • {PHONE_DISPLAY} • {EMAIL}
               </p>
