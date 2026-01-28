@@ -714,6 +714,10 @@ export default function Home() {
                   placeholder="Phone / Teléfono"
                 />
                 <input
+                  className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/70 md:col-span-2"
+                  placeholder="Address / Dirección (job site)"
+                />
+                <input
                   className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
                   placeholder="Email"
                 />
