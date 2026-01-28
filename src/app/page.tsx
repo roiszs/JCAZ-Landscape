@@ -703,20 +703,31 @@ export default function Home() {
               <form className="grid gap-3 md:grid-cols-2">
                 <input
                   className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60"
-                  placeholder="First Name / Nombre"
+                  placeholder="First Name"
                 />
                 <input
                   className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60"
-                  placeholder="Last Name / Apellido"
+                  placeholder="Last Name"
                 />
                 <input
                   className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
-                  placeholder="Phone / Teléfono"
+                  placeholder="Phone"
                 />
                 <input
                   className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/70 md:col-span-2"
-                  placeholder="Address / Dirección (job site)"
+                  placeholder="Address (job site)"
                 />
+
+                <div className="grid gap-3 md:col-span-2 md:grid-cols-2">
+                  <input
+                    className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/70"
+                    placeholder="City"
+                  />
+                  <input
+                    className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/70"
+                    placeholder="ZIP"
+                  />
+                </div>
                 <input
                   className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
                   placeholder="Email"
