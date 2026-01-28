@@ -13,7 +13,7 @@ import {
   MapPin,
   Hammer,
   BrickWall,
-  Leaf,
+  Layers,
   Droplet,
   Flame,
   Wrench,
@@ -25,6 +25,10 @@ import {
   Images,
   ArrowUpRight,
   Play,
+  PawPrint,
+  Lightbulb,
+  Flag,
+  Box,
 } from "lucide-react";
 
 const PHONE_DISPLAY = "480-227-7319";
@@ -42,6 +46,7 @@ const services = [
     esTitle: "Hardscape",
     enDesc: "Patios, walkways, retaining walls and outdoor upgrades built to last.",
     esDesc: "Patios, andadores, muros de contención y mejoras exteriores hechas para durar.",
+    icon: Hammer,
   },
   {
     key: "pavers",
@@ -49,20 +54,23 @@ const services = [
     esTitle: "Adoquín (Pavers)",
     enDesc: "Clean layouts and professional installation for patios, driveways and paths.",
     esDesc: "Diseño limpio e instalación profesional para patios, cocheras y pasillos.",
+    icon: BrickWall,
   },
   {
-    key: "turf",
-    enTitle: "Artificial Turf",
-    esTitle: "Pasto Artificial",
-    enDesc: "Low-maintenance turf that stays green year-round.",
-    esDesc: "Pasto de bajo mantenimiento que se mantiene verde todo el año.",
+    key: "pet-turf",
+    enTitle: "Pet Friendly Turf",
+    esTitle: "Pasto Pet Friendly",
+    enDesc: "Durable turf designed for pets—easy to clean and built to handle daily use.",
+    esDesc: "Pasto diseñado para mascotas—fácil de limpiar y hecho para uso diario.",
+    icon: PawPrint,
   },
   {
     key: "irrigation",
     enTitle: "Irrigation",
     esTitle: "Irrigación",
-    enDesc: "Efficient irrigation installs and fixes to keep your landscape healthy.",
+    enDesc: "Efficient irrigation installs and repairs to keep your landscape healthy.",
     esDesc: "Instalación y reparación de riego para mantener tu jardín en buen estado.",
+    icon: Droplet,
   },
   {
     key: "travertine",
@@ -70,6 +78,7 @@ const services = [
     esTitle: "Travertino",
     enDesc: "Premium stone finishes for patios, pool areas and outdoor living spaces.",
     esDesc: "Acabados premium en piedra para patios, albercas y áreas exteriores.",
+    icon: Layers,
   },
   {
     key: "outdoorliving",
@@ -77,6 +86,7 @@ const services = [
     esTitle: "Áreas Sociales",
     enDesc: "BBQs, pergolas and fire pits to turn your yard into a true gathering space.",
     esDesc: "Asadores, pérgolas y fogateros para convertir tu patio en un espacio para convivir.",
+    icon: Flame,
   },
   {
     key: "maintenance",
@@ -84,25 +94,34 @@ const services = [
     esTitle: "Mantenimiento y Limpiezas",
     enDesc: "Residential & commercial maintenance, cleanups, weed control and HOA support.",
     esDesc: "Mantenimiento residencial y comercial, limpiezas, control de maleza y apoyo a HOA.",
+    icon: Wrench,
+  },
+  {
+    key: "low-voltage-lighting",
+    enTitle: "Low-Voltage Lighting",
+    esTitle: "Iluminación de Bajo Voltaje",
+    enDesc: "Outdoor lighting that boosts curb appeal, safety, and nighttime ambiance.",
+    esDesc: "Iluminación exterior para mejorar vista, seguridad y ambiente por la noche.",
+    icon: Lightbulb,
+  },
+  {
+    key: "putting-greens",
+    enTitle: "Putting Greens",
+    esTitle: "Putting Greens",
+    enDesc: "Custom putting greens for backyards—smooth roll, clean edges, pro finish.",
+    esDesc: "Putting greens a medida—rodado suave, bordes limpios y acabado profesional.",
+    icon: Flag,
+  },
+  {
+    key: "3d-rendering",
+    enTitle: "3D Design Rendering",
+    esTitle: "Render 3D de Diseño",
+    enDesc: "Visualize your project before we build—layouts, materials, and final look.",
+    esDesc: "Visualiza tu proyecto antes de construir—diseño, materiales y resultado final.",
+    icon: Box,
   },
 ];
 
-const processSteps = [
-  { en: "Call / Message", es: "Llama / Mensaje", icon: PhoneCall },
-  { en: "On-Site Visit", es: "Visita al Sitio", icon: MapPin },
-  { en: "Free Estimate", es: "Cotización Gratis", icon: FileText },
-  { en: "Build & Walkthrough", es: "Construcción y Entrega", icon: HardHat },
-];
-
-const serviceIconByKey: Record<string, any> = {
-  hardscaping: Hammer,
-  pavers: BrickWall,
-  turf: Leaf,
-  irrigation: Droplet,
-  travertine: FileText,
-  outdoorliving: Flame,
-  maintenance: Wrench,
-};
 
 
 export default function Home() {
@@ -364,7 +383,8 @@ export default function Home() {
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {services.map((s) => {
-              const Ico = serviceIconByKey[s.key] ?? Wrench;
+              const Ico = s.icon;
+
 
               return (
                 <div
@@ -554,8 +574,6 @@ export default function Home() {
             <span className="en">Recent Work</span>
             <span className="es">Trabajo Reciente</span>
           </div>
-
-          {/* Optional: tiny hint icon bottom-right (no link, still same click) */}
        
 
         </div>
