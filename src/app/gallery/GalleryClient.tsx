@@ -95,7 +95,6 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
                   {p.category ?? "Project"}
                 </span>
-              
               </div>
 
               {/* Expand hint */}
@@ -105,17 +104,18 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
                   View
                 </span>
               </div>
-
-              {/* Bottom overlay */}
-              
             </div>
           </button>
         ))}
       </div>
 
-      {/* Lightbox (premium) */}
+      {/* Lightbox (FIXED) */}
       {openIndex !== null && (
-        <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true">
+        <div
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+        >
           <button
             type="button"
             onClick={close}
@@ -143,25 +143,20 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
             <ChevronRight className="h-5 w-5 text-brand-green" />
           </button>
 
-          <div className="w-full max-w-5xl overflow-hidden rounded-3xl border border-brand-white/10 bg-brand-black/60 shadow-[0_30px_120px_rgba(0,0,0,0.65)]">
-            <div className="relative">
-              <Image
-                src={filtered[openIndex].src}
-                alt={filtered[openIndex].alt}
-                width={2200}
-                height={1400}
-                className="h-auto w-full object-contain"
-                priority
-              />
-            </div>
-
-            <div className="border-t border-brand-white/10 p-4 md:p-5">
-              <p className="text-sm font-extrabold text-brand-white">{filtered[openIndex].category ?? "Project"}</p>
-              <p className="mt-1 text-sm text-brand-white/70">{filtered[openIndex].alt}</p>
-            </div>
+          {/* ✅ IMPORTANT: this container has real size */}
+          <div className="relative h-[85vh] w-[95vw] max-w-6xl overflow-hidden rounded-3xl border border-brand-white/10 bg-black/30 shadow-[0_0_0_1px_rgba(255,255,255,0.05),0_40px_120px_rgba(0,0,0,0.6)]">
+            <Image
+              src={filtered[openIndex].src}
+              alt=""
+              fill
+              className="object-contain"
+              priority
+              sizes="95vw"
+            />
           </div>
         </div>
       )}
     </>
   );
 }
+
