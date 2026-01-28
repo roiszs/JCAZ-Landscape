@@ -95,6 +95,7 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />
                   {p.category ?? "Project"}
                 </span>
+              
               </div>
 
               {/* Expand hint */}
@@ -106,12 +107,7 @@ export default function GalleryClient({ photos }: { photos: Photo[] }) {
               </div>
 
               {/* Bottom overlay */}
-              <div className="absolute inset-x-0 bottom-0 p-4">
-                <div className="rounded-2xl border border-brand-white/10 bg-black/45 p-3 backdrop-blur">
-                  <p className="text-sm font-extrabold text-brand-white line-clamp-1">{p.alt}</p>
-                  <p className="mt-1 text-xs text-brand-white/70">Tap to open full size</p>
-                </div>
-              </div>
+              
             </div>
           </button>
         ))}

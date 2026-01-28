@@ -556,10 +556,7 @@ export default function Home() {
           </div>
 
           {/* Optional: tiny hint icon bottom-right (no link, still same click) */}
-          <div className="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-xl border border-brand-white/15 bg-brand-black/40 px-3 py-2 text-xs font-extrabold text-brand-white/90 backdrop-blur">
-            <span className="en">Open</span>
-            <span className="es">Abrir</span>
-          </div>
+        
         </div>
       </button>
     ))}
