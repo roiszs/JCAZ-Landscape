@@ -738,7 +738,7 @@ export default function Home() {
                 />
                 <button
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90 md:col-span-2"
-                  type="button"
+                  type="submit"
                 >
                   <ArrowUpRight className="h-4 w-4 text-brand-white" />
                   <span className="en">Submit</span>
