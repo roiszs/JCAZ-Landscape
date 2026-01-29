@@ -5,9 +5,11 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { useState } from "react";
 import { HeroVideo } from "../components/sections/HeroVideo";
+
 import {
   Instagram,
   Facebook,
+  Music2,
   PhoneCall,
   Mail,
   MapPin,
@@ -38,6 +40,8 @@ const EMAIL_HREF = `mailto:${EMAIL}`;
 const LOCATION = "Phoenix, AZ";
 const INSTAGRAM = "https://www.instagram.com/jcarizonalandscape/";
 const FACEBOOK = "https://www.facebook.com/100083666319172/";
+const TIKTOK = "https://www.tiktok.com/@jcarizonalandscape";
+
 
 const services = [
   {
@@ -332,41 +336,67 @@ export default function Home() {
 
     {/* Video card */}
     <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
-      <p className="text-sm text-brand-white/70">
-        <span className="en">Watch a quick intro and see recent work.</span>
-        <span className="es">Mira una breve presentación y trabajos recientes.</span>
-      </p>
+    <p className="mb-4">
+  <span className="en block text-sm font-semibold tracking-wide text-brand-white/90">
+    Quick intro video
+  </span>
+  <span className="en block text-xs text-brand-white/60">
+    See recent work in under a minute
+  </span>
 
-      <div className="flex md:justify-end">
-        <HeroVideo mp4Src="/videos/hero-intro.mp4" posterSrc="/images/hero-poster.jpg" />
-      </div>
+  <span className="es block text-sm font-semibold tracking-wide text-brand-white/90">
+    Video breve
+  </span>
+  <span className="es block text-xs text-brand-white/60">
+    Mira trabajos recientes en menos de un minuto
+  </span>
+</p>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        <a
-          href={INSTAGRAM}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-        >
-          <span className="inline-flex items-center gap-2">
-            <Instagram className="h-4 w-4 text-brand-green" />
-            Instagram
-          </span>
-        </a>
 
-        <a
-          href={FACEBOOK}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-        >
-          <span className="inline-flex items-center gap-2">
-            <Facebook className="h-4 w-4 text-brand-green" />
-            Facebook
-          </span>
-        </a>
-      </div>
-    </div>
+
+  <div className="mt-3">
+  <HeroVideo
+  mp4Src="/videos/hero-intro.mp4"
+
+/>
+
+
+  </div>
+
+  {/* Social media */}
+  <div className="mt-4 flex flex-wrap gap-2">
+    <a
+      href={INSTAGRAM}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+    >
+      <Instagram className="h-4 w-4 text-brand-green" />
+      Instagram
+    </a>
+
+    <a
+      href={FACEBOOK}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+    >
+      <Facebook className="h-4 w-4 text-brand-green" />
+      Facebook
+    </a>
+
+    <a
+      href={TIKTOK}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+    >
+      <Music2 className="h-4 w-4 text-brand-green" />
+      TikTok
+    </a>
+  </div>
+</div>
+
   </div>
 </section>
 

@@ -1,63 +1,75 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 
+type Props = { mp4Src: string };
 
-type Props = {
-  mp4Src: string;
-  posterSrc?: string;
-};
-
-export function HeroVideo({ mp4Src, posterSrc }: Props) {
+export function HeroVideo({ mp4Src }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  // Congelar el primer frame (sin depender de ready para mostrar el botón)
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const freezeFirstFrame = () => {
+      try {
+        v.pause();
+        v.currentTime = 0;
+      } catch {}
+    };
+
+    // Algunos navegadores disparan uno y otros disparan otro
+    v.addEventListener("loadeddata", freezeFirstFrame);
+    v.addEventListener("loadedmetadata", freezeFirstFrame);
+
+    return () => {
+      v.removeEventListener("loadeddata", freezeFirstFrame);
+      v.removeEventListener("loadedmetadata", freezeFirstFrame);
+    };
+  }, []);
 
   const handlePlay = async () => {
     const v = videoRef.current;
     if (!v) return;
 
     try {
-      v.muted = false; // queremos sonido
+      v.controls = true;     // ✅ botones nativos
+      v.muted = false;
+      setPlaying(true);
       await v.play();
-      setIsPlaying(true);
     } catch {
-      // Si el navegador bloquea por alguna razón, mostramos controles para que el usuario lo inicie manualmente
       v.controls = true;
     }
   };
 
   return (
-    <div className="relative mt-3 w-full max-w-[320px] overflow-hidden rounded-2xl border border-brand-white/10 bg-brand-black shadow-lg shadow-black/40 md:mt-0 md:max-w-[360px]">
-      <div className="relative aspect-[9/16] w-full">
-        <video
-          ref={videoRef}
-          className="h-full w-full object-contain"
-          preload="metadata"
-          poster={posterSrc}
-          controls={isPlaying}
-          playsInline
-        >
-          <source src={mp4Src} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-  
-        {!isPlaying && (
-          <button
-            type="button"
-            onClick={handlePlay}
-            className="absolute inset-0 flex items-center justify-center bg-brand-black/30 hover:bg-brand-black/20"
-            aria-label="Play introduction video"
-          >
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-white px-6 py-3 font-extrabold text-brand-black">
-            <Play className="h-5 w-5 text-brand-green" />
-            Play Video
-            </span>
+    <div className="relative h-56 overflow-hidden rounded-3xl border border-brand-white/10 bg-brand-black md:h-64">
+      <video
+        ref={videoRef}
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        preload="auto"
+        playsInline
+      >
+        <source src={mp4Src} type="video/mp4" />
+      </video>
 
-          </button>
-        )}
-      </div>
+      {/* Botón Play pequeño (siempre visible antes de reproducir) */}
+      {!playing && (
+        <button
+          type="button"
+          onClick={handlePlay}
+          aria-label="Play video"
+          className="absolute inset-0 flex items-center justify-center"
+        >
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-white/90 shadow-lg backdrop-blur-md transition hover:scale-105 active:scale-95">
+            <Play className="ml-0.5 h-5 w-5 fill-brand-green text-brand-green" />
+          </span>
+        </button>
+      )}
     </div>
   );
-  
 }
+
