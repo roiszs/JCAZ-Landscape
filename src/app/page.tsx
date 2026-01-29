@@ -336,31 +336,14 @@ export default function Home() {
 
     {/* Video card */}
     <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
-    <p className="mb-4">
-  <span className="en block text-sm font-semibold tracking-wide text-brand-white/90">
-    Quick intro video
-  </span>
-  <span className="en block text-xs text-brand-white/60">
-    See recent work in under a minute
-  </span>
-
-  <span className="es block text-sm font-semibold tracking-wide text-brand-white/90">
-    Video breve
-  </span>
-  <span className="es block text-xs text-brand-white/60">
-    Mira trabajos recientes en menos de un minuto
-  </span>
-</p>
-
+    <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-white/15 bg-brand-black/40 px-4 py-1.5 text-xs text-brand-white/80 backdrop-blur">
+    <span className="h-2 w-2 rounded-full bg-brand-green" />
+    <span>Owner introduction & recent projects</span>
+    </div>
 
 
   <div className="mt-3">
-  <HeroVideo
-  mp4Src="/videos/hero-intro.mp4"
-
-/>
-
-
+    <HeroVideo mp4Src="/videos/hero-intro.mp4" />
   </div>
 
   {/* Social media */}
@@ -396,6 +379,7 @@ export default function Home() {
     </a>
   </div>
 </div>
+
 
   </div>
 </section>
