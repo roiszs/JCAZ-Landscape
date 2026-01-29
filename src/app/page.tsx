@@ -384,6 +384,63 @@ export default function Home() {
   </div>
 </section>
 
+{/* SOCIAL PROOF */}
+<section className="mx-auto max-w-6xl px-4 py-6">
+  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+    {/* Google */}
+    <div className="flex items-center gap-4 rounded-2xl border border-brand-white/10 bg-brand-black/40 px-5 py-4 backdrop-blur">
+      <img
+        src="/services/google-icon.svg"
+        alt="Google Reviews"
+        className="h-8 w-8"
+      />
+      <div>
+        <p className="flex items-center gap-1 text-sm font-extrabold">
+          5.0
+          <span className="text-yellow-400">★★★★★</span>
+        </p>
+        <p className="text-xs text-brand-white/70">
+          Based on 50+ Reviews
+        </p>
+      </div>
+    </div>
+
+    {/* Facebook */}
+    <div className="flex items-center gap-4 rounded-2xl border border-brand-white/10 bg-brand-black/40 px-5 py-4 backdrop-blur">
+      <img
+        src="/public/images/services/facebook-svg.svg"
+        alt="Facebook Reviews"
+        className="h-8 w-8"
+      />
+      <div>
+        <p className="flex items-center gap-1 text-sm font-extrabold">
+          5.0
+          <span className="text-yellow-400">★★★★★</span>
+        </p>
+        <p className="text-xs text-brand-white/70">
+          Based on 50+ Reviews
+        </p>
+      </div>
+    </div>
+
+    {/* Trust badge */}
+    <div className="flex items-center gap-4 rounded-2xl border border-brand-white/10 bg-brand-black/40 px-5 py-4 backdrop-blur">
+      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-green/15">
+        <span className="text-brand-green">✔</span>
+      </div>
+      <div>
+        <p className="text-sm font-extrabold">Licensed & Insured</p>
+        <p className="text-xs text-brand-white/70">
+          Arizona Contractors
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
         {/* SERVICES */}
         <section id="services" className="mx-auto max-w-6xl px-4 py-10">
           <h2 className="text-2xl font-extrabold">
