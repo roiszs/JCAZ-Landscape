@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Play, Volume2, VolumeX } from "lucide-react";
 
 type Props = {
   mp4Src: string;
-  posterSrc: string; // <-- hazlo REQUIRED para evitar negro en iOS
-  className?: string; // para controlar tamaño desde afuera
+  posterSrc: string; // requerido para iOS
+  className?: string;
 };
 
 export function HeroVideo({ mp4Src, posterSrc, className = "" }: Props) {
@@ -14,13 +15,12 @@ export function HeroVideo({ mp4Src, posterSrc, className = "" }: Props) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [soundOn, setSoundOn] = useState(false);
 
-  // “Warm up” para intentar pintar un frame (fallback extra)
+  // Warm-up para iOS (intenta pintar un frame)
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
 
     const onLoaded = () => {
-      // OJO: iOS a veces ignora esto, pero ayuda en varios casos
       try {
         v.currentTime = 0.01;
       } catch {}
@@ -35,14 +35,12 @@ export function HeroVideo({ mp4Src, posterSrc, className = "" }: Props) {
     if (!v) return;
 
     try {
-      // Para que arranque con sonido: requiere gesto del usuario (este click cuenta)
       v.muted = false;
       v.volume = 1;
       await v.play();
       setIsPlaying(true);
       setSoundOn(true);
     } catch {
-      // Si algún navegador bloquea, mostramos controles nativos
       v.controls = true;
     }
   };
@@ -57,38 +55,46 @@ export function HeroVideo({ mp4Src, posterSrc, className = "" }: Props) {
   return (
     <div
       className={[
-        // Contenedor “premium” y centrado
         "relative overflow-hidden rounded-3xl border border-brand-white/10 bg-brand-black/40",
         "shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_30px_80px_rgba(0,0,0,0.55)]",
         className,
       ].join(" ")}
     >
-      {/* Video */}
+      {/* VIDEO (sin zoom) */}
       <video
         ref={videoRef}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
         preload="metadata"
-        poster={posterSrc}
         playsInline
-        controls={isPlaying} // cuando ya está play, deja los controles
+        controls={isPlaying}
       >
         <source src={mp4Src} type="video/mp4" />
       </video>
 
-      {/* Overlay (antes de play) */}
+      {/* POSTER + PLAY OVERLAY */}
       {!isPlaying && (
         <div className="absolute inset-0">
-          {/* oscurecido suave (NO negro pesado) */}
+          {/* Poster con zoom */}
+          <Image
+            src={posterSrc}
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+
+          {/* Overlay suave */}
           <div className="absolute inset-0 bg-black/15" />
 
-          {/* Botón play (más chico, premium) */}
+          {/* Botón Play */}
           <button
             type="button"
             onClick={handlePlay}
             className="absolute inset-0 grid place-items-center"
             aria-label="Play introduction video"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-brand-white px-5 py-3 text-sm font-extrabold text-brand-black shadow-[0_10px_30px_rgba(0,0,0,0.35)] hover:scale-[1.02] active:scale-[0.99] transition">
+            <span className="inline-flex items-center gap-2 rounded-full bg-brand-white px-5 py-3 text-sm font-extrabold text-brand-black shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition hover:scale-[1.03] active:scale-[0.98]">
               <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-brand-green">
                 <Play className="h-4 w-4 text-brand-green" />
               </span>
@@ -96,14 +102,14 @@ export function HeroVideo({ mp4Src, posterSrc, className = "" }: Props) {
             </span>
           </button>
 
-          {/* hint de sonido */}
+          {/* Hint sonido */}
           <div className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-brand-white/15 bg-brand-black/40 px-3 py-1 text-[11px] text-brand-white/80 backdrop-blur">
             Tap to play with sound
           </div>
         </div>
       )}
 
-      {/* Botón sonido (cuando ya está reproduciéndose) */}
+      {/* Botón sonido (cuando ya está reproduciendo) */}
       {isPlaying && (
         <button
           type="button"

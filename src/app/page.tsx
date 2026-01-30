@@ -346,8 +346,15 @@ export default function Home() {
   <HeroVideo
   mp4Src="/videos/hero-intro.mp4"
   posterSrc="/images/hero.png"
-  className="mt-4 h-[360px] w-full md:h-[320px]"
+  className="
+    mt-4 
+    h-[280px] 
+    w-full 
+    md:h-[260px]
+    lg:max-w-[520px]
+  "
 />
+
 
 
 
