@@ -343,7 +343,14 @@ export default function Home() {
 
 
   <div className="mt-3">
-    <HeroVideo mp4Src="/videos/hero-intro.mp4" />
+  <HeroVideo
+  mp4Src="/videos/hero-intro.mp4"
+  posterSrc="/images/hero.png"
+  className="mt-4 h-[360px] w-full md:h-[320px]"
+/>
+
+
+
   </div>
 
   {/* Social media */}
@@ -853,6 +860,15 @@ export default function Home() {
               >
                 <Facebook className="h-4 w-4 text-brand-green" />
                 Facebook
+              </a>
+              <a
+                href={TIKTOK}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+              >
+                <Music2 className="h-4 w-4 text-brand-green" />
+                TikTok
               </a>
             </div>
           </div>
