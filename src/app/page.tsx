@@ -391,7 +391,7 @@ export default function Home() {
     {/* Google */}
     <div className="flex items-center gap-4 rounded-2xl border border-brand-white/10 bg-brand-black/40 px-5 py-4 backdrop-blur">
       <img
-        src="/services/google-icon.svg"
+        src="/images/services/google-icon.svg"
         alt="Google Reviews"
         className="h-8 w-8"
       />
@@ -409,7 +409,7 @@ export default function Home() {
     {/* Facebook */}
     <div className="flex items-center gap-4 rounded-2xl border border-brand-white/10 bg-brand-black/40 px-5 py-4 backdrop-blur">
       <img
-        src="/public/images/services/facebook-svg.svg"
+        src="/images/services/facebook-svg.svg"
         alt="Facebook Reviews"
         className="h-8 w-8"
       />
