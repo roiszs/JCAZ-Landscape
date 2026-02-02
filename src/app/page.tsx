@@ -162,7 +162,7 @@ export default function Home() {
 
       /* Bottom-right glow (deeper scroll) */
       radial-gradient(1200px circle at 85% 175%, rgba(15, 99, 0, 0.18), transparent 70%)
-    `,
+    `
   }}
 >
 
@@ -174,6 +174,7 @@ export default function Home() {
 
         <div className="peer-checked:[&_.en]:hidden peer-checked:[&_.es]:block [&_.es]:hidden">
           {/* HEADER */}
+          
           <header className="sticky top-0 z-50 border-b border-brand-white/10 bg-brand-black/80 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
             <a href="#" className="flex items-center gap-3">
@@ -630,6 +631,16 @@ export default function Home() {
         <Facebook className="h-4 w-4 text-brand-green" />
         Facebook
       </a>
+
+      <a
+      href={TIKTOK}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-4 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
+    >
+      <Music2 className="h-4 w-4 text-brand-green" />
+      TikTok
+    </a>
     </div>
   </div>
 
