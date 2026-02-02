@@ -262,10 +262,6 @@ const [status, setStatus] = useState<"idle"|"loading"|"success"|"error">("idle")
                 <span className="en">About</span>
                 <span className="es">Nosotros</span>
               </a>
-              <a className="hover:text-brand-white" href="#process">
-                <span className="en">Process</span>
-                <span className="es">Proceso</span>
-              </a>
               <a className="hover:text-brand-white" href="#projects">
                 <span className="en">Projects</span>
                 <span className="es">Proyectos</span>
