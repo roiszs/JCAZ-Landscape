@@ -126,10 +126,10 @@ const services = [
   },
 ];
 
-const [status, setStatus] = useState<"idle"|"loading"|"success"|"error">("idle");
+
 
 export default function Home() {
-
+const [status, setStatus] = useState<"idle"|"loading"|"success"|"error">("idle");
 <form
   className="grid gap-3 md:grid-cols-2"
   onSubmit={async (e) => {
