@@ -126,9 +126,74 @@ const services = [
   },
 ];
 
-
+const [status, setStatus] = useState<"idle"|"loading"|"success"|"error">("idle");
 
 export default function Home() {
+
+<form
+  className="grid gap-3 md:grid-cols-2"
+  onSubmit={async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/estimate", {
+        method: "POST",
+        body: JSON.stringify(Object.fromEntries(fd)),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    }
+  }}
+>
+  <input name="firstName" required className="..." placeholder="First Name / Nombre" />
+  <input name="lastName" required className="..." placeholder="Last Name / Apellido" />
+
+  <input name="phone" required className="... md:col-span-2" placeholder="Phone / Teléfono" />
+  <input name="email" className="... md:col-span-2" placeholder="Email" />
+
+  {/* ✅ Address */}
+  <input
+    name="address"
+    required
+    className="... md:col-span-2"
+    placeholder="Project Address / Dirección del trabajo"
+  />
+
+  <textarea name="message" className="... md:col-span-2" placeholder="Project details / Detalles del proyecto" />
+
+  {/* metadata */}
+  <input type="hidden" name="lang" value="en" />
+  <input type="hidden" name="source" value="home" />
+
+  <button
+    className="rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90 md:col-span-2 disabled:opacity-60"
+    type="submit"
+    disabled={status === "loading"}
+  >
+    {status === "loading" ? "Sending..." : "Submit"}
+  </button>
+
+  {status === "success" && (
+    <p className="md:col-span-2 text-sm text-brand-white/80">
+      ✅ Sent! We’ll contact you shortly.
+    </p>
+  )}
+
+  {status === "error" && (
+    <p className="md:col-span-2 text-sm text-red-300">
+      ❌ Something went wrong. Please call us or try again.
+    </p>
+  )}
+</form>
 
   const [openProject, setOpenProject] = useState<number | null>(null);
   return (
