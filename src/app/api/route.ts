@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzaeqMltc8dZyLoqf4Se3uOvu5tp2p0pizQcq8kHuDbjDdF-YXiVnOd96eoVjmWkR4JOA/exec";
+"https://script.google.com/macros/s/AKfycbzFM26-zeI7rJnDPbhM2MZFkuSqBFkDnJPeN2LujL-cNL3RHNugLUd9mjeZ8LFf30MCSQ/exec";
 
 export async function POST(req: Request) {
     try {
@@ -15,18 +15,20 @@ export async function POST(req: Request) {
   
       const text = await r.text();
   
-      // Si Google respondió pero con error, mándalo como 500 para que lo notes
+      // intenta parsear respuesta del script
       let parsed: any = null;
-      try { parsed = JSON.parse(text); } catch {}
+      try {
+        parsed = JSON.parse(text);
+      } catch {}
   
-      if (!r.ok || (parsed && parsed.ok === false)) {
-        return NextResponse.json(
-          { ok: false, google_status: r.status, google: text },
-          { status: 500 }
-        );
-      }
+      const ok = parsed?.ok === true && r.ok;
   
-      return NextResponse.json({ ok: true, google_status: r.status, google: text });
+      return NextResponse.json({
+        ok,
+        google_status: r.status,
+        google: parsed ?? text,
+      }, { status: ok ? 200 : 500 });
+  
     } catch (err: any) {
       return NextResponse.json(
         { ok: false, error: err?.message ?? "Unknown error" },
