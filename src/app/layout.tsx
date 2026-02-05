@@ -7,9 +7,12 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-export const metadata: Metadata = {
-  title: "JCAZ Landscape LLC | Arizona",
-  description: "Free estimates. Quality outdoor and construction work in Arizona.",
+export const metadata = {
+  title: "JC Arizona Landscape",
+  description: "Hardscaping & Outdoor Living",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,3 +22,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
