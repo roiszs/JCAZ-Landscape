@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-<link rel="icon" href="/favicon.png" />
+
+
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -12,15 +13,20 @@ export const metadata: Metadata = {
   title: "JC Arizona Landscape",
   description: "Hardscaping & Outdoor Living",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon-jcaz-2026.png",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <head>
+        <link rel="icon" href="/favicon-jcaz-2026.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon-jcaz-2026.png" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
+
 
