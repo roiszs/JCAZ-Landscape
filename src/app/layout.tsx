@@ -7,7 +7,7 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "JC Arizona Landscape",
   description: "Hardscaping & Outdoor Living",
   icons: {
