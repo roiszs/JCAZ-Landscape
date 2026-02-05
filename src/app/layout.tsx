@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+<link rel="icon" href="/favicon.png" />
 
 const montserrat = Montserrat({
   subsets: ["latin"],
