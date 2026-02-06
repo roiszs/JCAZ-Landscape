@@ -238,8 +238,8 @@ export default function Home() {
                 </p>
 
                 <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
-                  <span className="en">Hardscaping & Outdoor Living Built to Last.</span>
-                  <span className="es">Hardscape y Exteriores Hechos Para Durar.</span>
+                  <span className="en">Landscaping & Hardscaping Services in Arizona.</span>
+                  <span className="es">Hardscape y Exteriores en Arizona.</span>
                 </h1>
 
                 <p className="mt-4 text-brand-white/80">
@@ -840,6 +840,7 @@ export default function Home() {
             <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-brand-white/75">
               <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                 <p>© {new Date().getFullYear()} JC Arizona Landscape LLC</p>
+                <p>Serving Arizona and surrounding areas</p>
                 <p className="text-brand-white/60">
                   {LOCATION} • {PHONE_DISPLAY} • {EMAIL}
                 </p>
