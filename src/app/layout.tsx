@@ -10,18 +10,11 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "JC Arizona Landscape",
   description: "Hardscaping & Outdoor Living",
-  icons: {
-    icon: "/favicon-jcaz-2026.ico",
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon-jcaz-2026.ico" sizes="any" />
-        <link rel="shortcut icon" href="/favicon-jcaz-2026.ico" />
-      </head>
       <body>{children}</body>
     </html>
   );
