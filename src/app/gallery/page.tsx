@@ -113,35 +113,92 @@ export default function GalleryPage() {
       </div>
 
       {/* Footer (copiado, sin componente) */}
-      <footer className="border-t border-brand-white/10">
-        <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-brand-white/75">
-          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} JC Arizona Landscape LLC</p>
-            <p className="text-brand-white/60">
-              {LOCATION} • {PHONE_DISPLAY} • {EMAIL}
+      <footer className="mt-16 border-t border-brand-white/10">
+      <div className="mx-auto max-w-6xl px-6 py-7">
+        <div className="grid items-start gap-6 md:grid-cols-3">
+          {/* LEFT */}
+          <div className="space-y-3">
+            <p className="text-sm text-brand-white/80">
+              © 2026 JC Arizona Landscape LLC
             </p>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+              >
+                Facebook
+              </a>
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+              >
+                TikTok
+              </a>
+            </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <a
-              href={INSTAGRAM}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-            >
-              Instagram
-            </a>
-            <a
-              href={FACEBOOK}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-            >
-              Facebook
-            </a>
+          {/* CENTER */}
+          <div className="text-sm text-brand-white/70 md:text-center">
+            Serving Arizona and surrounding areas
+          </div>
+
+          {/* RIGHT */}
+          <div className="space-y-2 text-sm text-brand-white/70 md:text-right">
+            <p>Phoenix, AZ</p>
+
+            <p>
+              <a
+                href="tel:4802277319"
+                className="text-brand-white/80 transition hover:text-brand-green"
+              >
+                480-227-7319
+              </a>
+            </p>
+
+            <p>
+              <a
+                href="mailto:jcazlandscape@yahoo.com"
+                className="text-brand-white/80 transition hover:text-brand-green"
+              >
+                jcazlandscape@yahoo.com
+              </a>
+            </p>
+
+            <div className="pt-2 flex flex-wrap gap-6 text-xs md:justify-end">
+              <Link
+                href="/privacy"
+                className="text-brand-white/60 transition hover:text-brand-green"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-brand-white/60 transition hover:text-brand-green"
+              >
+                Terms &amp; Conditions
+              </Link>
+            </div>
+
+            <p className="pt-2 text-xs text-brand-white/50">
+              Licensed &amp; Insured · Free Estimates
+            </p>
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
     </BrandBackground>
   );
 }
