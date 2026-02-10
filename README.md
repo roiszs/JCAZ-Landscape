@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+JC Arizona Landscape – Website
 
-## Getting Started
+Official website for JC Arizona Landscape LLC, built and deployed by FronteraCode.
+The site is optimized for performance, SEO, lead generation, and long-term maintainability.
 
-First, run the development server:
+🌐 Live website:
+https://www.jcazlandscape.co
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+🚀 Project Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This website serves as the main digital presence for JC Arizona Landscape, allowing potential customers to:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Learn about services
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+View brand identity and visuals
 
-## Learn More
+Request a Free Estimate via a real working form
 
-To learn more about Next.js, take a look at the following resources:
+Receive automatic email confirmations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contact the business easily from any device
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The project was designed with a modern UI, mobile-first approach, and SEO best practices.
 
-## Deploy on Vercel
+🧱 Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Framework: Next.js (App Router)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Language: TypeScript
+
+Styling: Tailwind CSS
+
+Hosting: Vercel
+
+Forms & Backend Logic: Google Apps Script (Sheets + Email)
+
+Database: Google Sheets (leads storage)
+
+Email Service: Gmail (via Apps Script)
+
+Domain & DNS: Custom domain with Vercel
+
+SEO: Metadata API, semantic HTML, Open Graph
+
+✨ Key Features
+
+✅ Fully responsive (mobile, tablet, desktop)
+
+✅ Real lead capture (no fake/demo form)
+
+✅ Automatic email notifications:
+
+Business notification (new lead)
+
+Customer confirmation email
+
+✅ Google Sheets integration for lead tracking
+
+✅ SEO-ready (title, description, favicon, metadata)
+
+✅ Custom branding & visuals
+
+✅ Fast load times and optimized assets
+
+📩 Lead System Flow
+
+User submits Free Estimate form
+
+Data is:
+
+Saved to Google Sheets
+
+Sent to the business email
+
+Confirmation email sent to the customer
+
+Business can reply directly to the customer using Reply-To
+
+This setup avoids paid services and keeps ownership 100% in the client’s hands.
+
+📂 Project Structure (Simplified)
+/src
+ ├─ app
+ │   ├─ layout.tsx
+ │   ├─ page.tsx
+ │   ├─ api/
+ │   └─ gallery/
+ ├─ components/
+ ├─ styles/
+ └─ lib/
+
+/public
+ ├─ images/
+ ├─ videos/
+ ├─ favicon.ico
+ └─ brand/
+
+🔐 Environment & Configuration
+
+This project does not require a traditional backend or database credentials.
+
+Sensitive logic (emails + storage) is handled via Google Apps Script, which:
+
+Belongs to the business
+
+Can be edited or transferred
+
+Has no monthly cost
+
+🛠️ Maintenance Notes
+
+Google Sheets data can be cleared at any time (test data can be deleted safely)
+
+Email recipients can be updated inside Apps Script
+
+Domain and hosting are managed via Vercel
+
+Project can be extended with:
+
+WhatsApp notifications
+
+CRM integration
+
+Analytics dashboards
+
+Paid ads landing pages
+
+📈 SEO Status
+
+Metadata configured (title, description, icons)
+
+Semantic HTML structure
+
+Fast performance (Vercel + Next.js)
+
+Ready for Google Search Console & Analytics
+
+🧑‍💻 Developed By
+
+FronteraCode
+Custom Web Solutions & Systems
+
+📧 fronteracode@gmail.com
+
+🌐 https://www.fronteracode.dev
+
+📄 License
+
+This project was developed specifically for JC Arizona Landscape LLC.
+All branding, content, and assets belong to the client.
