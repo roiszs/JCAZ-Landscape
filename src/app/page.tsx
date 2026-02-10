@@ -848,7 +848,7 @@ export default function Home() {
 
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://instagram.com"
+                href={INSTAGRAM}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
@@ -856,7 +856,7 @@ export default function Home() {
                 Instagram
               </a>
               <a
-                href="https://facebook.com"
+                href={FACEBOOK}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
@@ -864,7 +864,7 @@ export default function Home() {
                 Facebook
               </a>
               <a
-                href="https://tiktok.com"
+                href={TIKTOK}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
