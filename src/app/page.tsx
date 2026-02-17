@@ -843,7 +843,7 @@ export default function Home() {
           {/* LEFT */}
           <div className="space-y-3">
             <p className="text-sm text-brand-white/80">
-              © 2026 JC Arizona Landscape LLC
+              © 2015 JC Arizona Landscape LLC
             </p>
 
             <div className="flex flex-wrap gap-3">
