@@ -331,14 +331,15 @@ export default function Home() {
                   href={FINANCING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3 hover:border-brand-white/20 hover:bg-brand-white/10 transition"
+                  className="flex items-center gap-2 rounded-xl border-2 border-brand-green/60 bg-brand-green/10 p-3 transition hover:bg-brand-green hover:text-brand-white"
                 >
                   <FileText className="h-4 w-4 text-brand-green" />
-                  <div className="leading-tight">
-                    <span className="en">Financing Click Here</span>
-                    <span className="es">Financiamiento Click Aquí</span>
+                  <div className="leading-tight font-extrabold">
+                    <span className="en">Financing (Click here) </span>
+                    <span className="es">Financiamiento (Click Aquí) </span>
                   </div>
                 </a>
+
               </div>
               </div>
 
