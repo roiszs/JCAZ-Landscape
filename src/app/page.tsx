@@ -252,38 +252,42 @@ export default function Home() {
                   </span>
                 </p>
 
-                {/* Primary actions */}
+                              {/* Primary actions */}
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
-                  >
-                    <ArrowUpRight className="h-4 w-4 text-brand-white" />
-                    <span className="en">Get a Free Estimate</span>
-                    <span className="es">Pedir Cotización</span>
-                  </a>
 
-                  <a
-                    href={PHONE_HREF}
-                    className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
-                  >
-                    <PhoneCall className="h-4 w-4 text-brand-green" />
-                    <span className="en">Call {PHONE_DISPLAY}</span>
-                    <span className="es">Llama {PHONE_DISPLAY}</span>
-                  </a>
+                {/* Get Estimate */}
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
+                >
+                  <ArrowUpRight className="h-4 w-4 text-brand-white" />
+                  <span className="en">Get a Free Estimate</span>
+                  <span className="es">Pedir Cotización</span>
+                </a>
 
-                  {/* Gallery button (mobile-first) */}
-                  <div className="mt-5 md:hidden">
-                    <a
-                      href="/gallery"
-                      className="inline-flex items-center gap-2 rounded-xl border border-brand-green/30 bg-brand-black/40 px-4 py-2 text-sm font-semibold text-brand-white backdrop-blur hover:border-brand-green hover:bg-brand-white/5"
-                    >
-                      <Images className="h-4 w-4 text-brand-green" />
-                      <span className="en">Gallery</span>
-                      <span className="es">Galeria</span>
-                    </a>
-                  </div>
+                {/* Call */}
+                <a
+                  href={PHONE_HREF}
+                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
+                >
+                  <PhoneCall className="h-4 w-4 text-brand-green" />
+                  <span className="en">Call {PHONE_DISPLAY}</span>
+                  <span className="es">Llama {PHONE_DISPLAY}</span>
+                </a>
+
+                {/* Gallery - mobile only, same style as primary */}
+                <a
+                  href="/gallery"
+                  className="inline-flex md:hidden items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
+                >
+                  <Images className="h-4 w-4 text-brand-white" />
+                  <span className="en">Gallery</span>
+                  <span className="es">Galería</span>
+                </a>
+
                 </div>
+
+
 
                 {/* Trust badges */}
                 <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
