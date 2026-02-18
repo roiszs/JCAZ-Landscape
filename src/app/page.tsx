@@ -354,8 +354,8 @@ export default function Home() {
                 <div className="mt-3">
                   <HeroVideo
                     mp4Src="/videos/hero-intro.mp4"
-                    posterSrc="/images/hero.png"
-                    className="mt-4 h-[280px] w-full md:h-[260px] lg:max-w-[520px]"
+                    posterSrc="/brand/hero-poster.png"
+                    className="mt-4 h-[200px] w-full md:h-[200x] lg:max-w-[420px]"
                   />
                 </div>
 
