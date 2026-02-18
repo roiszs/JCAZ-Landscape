@@ -30,6 +30,7 @@ import {
   Flag,
   Box,
   X,
+  DollarSign
 } from "lucide-react";
 
 const PHONE_DISPLAY = "480-227-7319";
@@ -40,6 +41,8 @@ const LOCATION = "Phoenix, AZ";
 const INSTAGRAM = "https://www.instagram.com/jcarizonalandscape/";
 const FACEBOOK = "https://www.facebook.com/100083666319172/";
 const TIKTOK = "https://www.tiktok.com/@jcarizonalandscape";
+const FINANCING_URL = "https://www.gethearth.com/partners/jc-arizona-landscaping-llc/joshua";
+
 
 const services = [
   {
@@ -206,6 +209,16 @@ export default function Home() {
                   <Images className="h-4 w-4 text-brand-white" />
                   <span>Gallery</span>
                 </a>
+                <a
+                href={FINANCING_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="hidden md:inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
+              >
+                <DollarSign className="h-4 w-4 text-brand-green" />
+                Financing
+              </a>
+
 
 
                 <a
