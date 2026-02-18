@@ -201,11 +201,12 @@ export default function Home() {
 
                 <a
                   href="/gallery"
-                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                  className="hidden md:inline-flex items-center gap-2 rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90"
                 >
-                  <Images className="h-4 w-4 text-brand-green" />
-                  <span className="hidden sm:inline">Gallery</span>
+                  <Images className="h-4 w-4 text-brand-white" />
+                  <span>Gallery</span>
                 </a>
+
 
                 <a
                   href={PHONE_HREF}
