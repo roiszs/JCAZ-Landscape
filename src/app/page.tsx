@@ -303,30 +303,45 @@ export default function Home() {
 
 
 
-                {/* Trust badges */}
-                <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
-                  {[
-                    { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
-                    { en: "Insured", es: "Asegurados", icon: ShieldCheck },
-                    { en: "Warranty", es: "Garantía", icon: Clock },
-                    { en: "Financing Available", es: "Financiamiento", icon: FileText },
-                  ].map((t) => {
-                    const Ico = t.icon;
-                    return (
-                      <div
-                        key={t.en}
-                        className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
-                      >
-                        <Ico className="h-4 w-4 text-brand-green" />
-                        <div className="leading-tight">
-                          <span className="en">{t.en}</span>
-                          <span className="es">{t.es}</span>
-                        </div>
+                              {/* Trust badges */}
+                              {/* Trust badges */}
+              <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
+                {[
+                  { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
+                  { en: "Insured", es: "Asegurados", icon: ShieldCheck },
+                  { en: "Warranty", es: "Garantía", icon: Clock },
+                ].map((t) => {
+                  const Ico = t.icon;
+                  return (
+                    <div
+                      key={t.en}
+                      className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
+                    >
+                      <Ico className="h-4 w-4 text-brand-green" />
+                      <div className="leading-tight">
+                        <span className="en">{t.en}</span>
+                        <span className="es">{t.es}</span>
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })}
+
+                {/* Financing badge (clickeable) */}
+                <a
+                  href={FINANCING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3 hover:border-brand-white/20 hover:bg-brand-white/10 transition"
+                >
+                  <FileText className="h-4 w-4 text-brand-green" />
+                  <div className="leading-tight">
+                    <span className="en">Financing Click Here</span>
+                    <span className="es">Financiamiento Click Aquí</span>
+                  </div>
+                </a>
               </div>
+              </div>
+
 
               {/* Video card */}
               <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
