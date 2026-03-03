@@ -9,7 +9,6 @@ import {
   Instagram,
   Facebook,
   Music2,
-  PhoneCall,
   MapPin,
   Hammer,
   BrickWall,
@@ -34,8 +33,6 @@ import {
 } from "lucide-react";
 
 const PHONE_DISPLAY = "480-227-7319";
-
-// ✅ WhatsApp phone (NO +, NO spaces)
 const WHATSAPP_PHONE = "14802277319";
 
 const LOCATION = "Phoenix, AZ";
@@ -44,45 +41,28 @@ const FACEBOOK = "https://www.facebook.com/100083666319172/";
 const TIKTOK = "https://www.tiktok.com/@jcarizonalandscape";
 const FINANCING_URL = "https://www.gethearth.com/partners/jc-arizona-landscaping-llc/joshua";
 
-// ✅ WhatsApp link generator (EN/ES)
+// ✅ WhatsApp link generator (EN/ES) — new minimal message
 function buildWhatsAppLink({
   lang,
-  cta,
   service,
-  pageUrl,
 }: {
   lang: "en" | "es";
-  cta: "estimate" | "call" | "contact" | "general";
-  service?: string;
-  pageUrl?: string;
+  service: string;
 }) {
-  const svc = service ?? (lang === "es" ? "un proyecto" : "a project");
-
-  const ctaLabel =
-    lang === "es"
-      ? { estimate: "Cotización", call: "Llamada", contact: "Contacto", general: "Información" }[cta]
-      : { estimate: "Estimate", call: "Call", contact: "Contact", general: "Info" }[cta];
-
   const text =
     lang === "es"
       ? [
-          `Hola 👋 (${ctaLabel})`,
-          `Me interesa una cotización para: ${svc}`,
-          `Zona/ciudad: ${LOCATION}`,
-          pageUrl ? `Página: ${pageUrl}` : null,
-          `¿Me puedes compartir disponibilidad y un estimado?`,
-        ]
-          .filter(Boolean)
-          .join("\n")
+          "Hola JC Arizona Landscape.",
+          `Me interesa una cotización para: ${service}.`,
+          "¿Me puedes compartir disponibilidad y un estimado?",
+          "Avísame si necesitas más información sobre mi proyecto.",
+        ].join("\n")
       : [
-          `Hi 👋 (${ctaLabel})`,
-          `I’d like an estimate for: ${svc}`,
-          `Area/city: ${LOCATION}`,
-          pageUrl ? `Page: ${pageUrl}` : null,
-          `Can you share availability and a rough quote?`,
-        ]
-          .filter(Boolean)
-          .join("\n");
+          "Hello JC Arizona Landscape.",
+          `I’m interested in a quote for: ${service}.`,
+          "Can you share availability and an estimate?",
+          "Let me know if you need any additional information about my project.",
+        ].join("\n");
 
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
 }
@@ -93,31 +73,38 @@ const services = [
     enTitle: "Hardscaping",
     esTitle: "Hardscape",
     enDesc: "Patios, walkways, retaining walls and outdoor upgrades built to last.",
-    esDesc: "Patios, andadores, muros de contención y mejoras exteriores hechas para durar.",
+    esDesc:
+      "Patios, andadores, muros de contención y mejoras exteriores hechas para durar.",
     icon: Hammer,
   },
   {
     key: "pavers",
     enTitle: "Pavers",
     esTitle: "Adoquín (Pavers)",
-    enDesc: "Clean layouts and professional installation for patios, driveways and paths.",
-    esDesc: "Diseño limpio e instalación profesional para patios, cocheras y pasillos.",
+    enDesc:
+      "Clean layouts and professional installation for patios, driveways and paths.",
+    esDesc:
+      "Diseño limpio e instalación profesional para patios, cocheras y pasillos.",
     icon: BrickWall,
   },
   {
     key: "pet-turf",
     enTitle: "Pet Friendly Turf",
     esTitle: "Pasto Pet Friendly",
-    enDesc: "Durable turf designed for pets—easy to clean and built to handle daily use.",
-    esDesc: "Pasto diseñado para mascotas—fácil de limpiar y hecho para uso diario.",
+    enDesc:
+      "Durable turf designed for pets—easy to clean and built to handle daily use.",
+    esDesc:
+      "Pasto diseñado para mascotas—fácil de limpiar y hecho para uso diario.",
     icon: PawPrint,
   },
   {
     key: "irrigation",
     enTitle: "Irrigation",
     esTitle: "Irrigación",
-    enDesc: "Efficient irrigation installs and repairs to keep your landscape healthy.",
-    esDesc: "Instalación y reparación de riego para mantener tu jardín en buen estado.",
+    enDesc:
+      "Efficient irrigation installs and repairs to keep your landscape healthy.",
+    esDesc:
+      "Instalación y reparación de riego para mantener tu jardín en buen estado.",
     icon: Droplet,
   },
   {
@@ -125,47 +112,58 @@ const services = [
     enTitle: "Travertine",
     esTitle: "Travertino",
     enDesc: "Premium stone finishes for patios, pool areas and outdoor living spaces.",
-    esDesc: "Acabados premium en piedra para patios, albercas y áreas exteriores.",
+    esDesc:
+      "Acabados premium en piedra para patios, albercas y áreas exteriores.",
     icon: Layers,
   },
   {
     key: "outdoorliving",
     enTitle: "Outdoor Living",
     esTitle: "Áreas Sociales",
-    enDesc: "BBQs, pergolas and fire pits to turn your yard into a true gathering space.",
-    esDesc: "Asadores, pérgolas y fogateros para convertir tu patio en un espacio para convivir.",
+    enDesc:
+      "BBQs, pergolas and fire pits to turn your yard into a true gathering space.",
+    esDesc:
+      "Asadores, pérgolas y fogateros para convertir tu patio en un espacio para convivir.",
     icon: Flame,
   },
   {
     key: "maintenance",
     enTitle: "Maintenance & Cleanups",
     esTitle: "Mantenimiento y Limpiezas",
-    enDesc: "Residential & commercial maintenance, cleanups, weed control and HOA support.",
-    esDesc: "Mantenimiento residencial y comercial, limpiezas, control de maleza y apoyo a HOA.",
+    enDesc:
+      "Residential & commercial maintenance, cleanups, weed control and HOA support.",
+    esDesc:
+      "Mantenimiento residencial y comercial, limpiezas, control de maleza y apoyo a HOA.",
     icon: Wrench,
   },
   {
     key: "low-voltage-lighting",
     enTitle: "Low-Voltage Lighting",
     esTitle: "Iluminación de Bajo Voltaje",
-    enDesc: "Outdoor lighting that boosts curb appeal, safety, and nighttime ambiance.",
-    esDesc: "Iluminación exterior para mejorar vista, seguridad y ambiente por la noche.",
+    enDesc:
+      "Outdoor lighting that boosts curb appeal, safety, and nighttime ambiance.",
+    esDesc:
+      "Iluminación exterior para mejorar vista, seguridad y ambiente por la noche.",
     icon: Lightbulb,
   },
   {
     key: "putting-greens",
     enTitle: "Putting Greens",
     esTitle: "Putting Greens",
-    enDesc: "Custom putting greens for backyards—smooth roll, clean edges, pro finish.",
-    esDesc: "Putting greens a medida—rodado suave, bordes limpios y acabado profesional.",
+    enDesc:
+      "Custom putting greens for backyards—smooth roll, clean edges, pro finish.",
+    esDesc:
+      "Putting greens a medida—rodado suave, bordes limpios y acabado profesional.",
     icon: Flag,
   },
   {
     key: "3d-rendering",
     enTitle: "3D Design Rendering",
     esTitle: "Render 3D de Diseño",
-    enDesc: "Visualize your project before we build—layouts, materials, and final look.",
-    esDesc: "Visualiza tu proyecto antes de construir—diseño, materiales y resultado final.",
+    enDesc:
+      "Visualize your project before we build—layouts, materials, and final look.",
+    esDesc:
+      "Visualiza tu proyecto antes de construir—diseño, materiales y resultado final.",
     icon: Box,
   },
 ];
@@ -173,18 +171,24 @@ const services = [
 export default function Home() {
   const [openProject, setOpenProject] = useState<number | null>(null);
 
-  // ✅ page URL for context (safe on client)
-  const pageUrl = typeof window !== "undefined" ? window.location.href : undefined;
+  // ✅ general WhatsApp links
+  const WA_ESTIMATE_EN = buildWhatsAppLink({
+    lang: "en",
+    service: "Landscaping / Hardscaping",
+  });
+  const WA_ESTIMATE_ES = buildWhatsAppLink({
+    lang: "es",
+    service: "Hardscape / Jardinería",
+  });
 
-  // ✅ common WhatsApp links (general)
-  const WA_ESTIMATE_EN = buildWhatsAppLink({ lang: "en", cta: "estimate", service: "Landscaping / Hardscaping", pageUrl });
-  const WA_ESTIMATE_ES = buildWhatsAppLink({ lang: "es", cta: "estimate", service: "Hardscape / Jardinería", pageUrl });
-
-  const WA_CALL_EN = buildWhatsAppLink({ lang: "en", cta: "call", service: "Call request / quick question", pageUrl });
-  const WA_CALL_ES = buildWhatsAppLink({ lang: "es", cta: "call", service: "Solicitud de llamada / duda rápida", pageUrl });
-
-  const WA_CONTACT_EN = buildWhatsAppLink({ lang: "en", cta: "contact", service: "General inquiry", pageUrl });
-  const WA_CONTACT_ES = buildWhatsAppLink({ lang: "es", cta: "contact", service: "Información general", pageUrl });
+  const WA_CONTACT_EN = buildWhatsAppLink({
+    lang: "en",
+    service: "General inquiry",
+  });
+  const WA_CONTACT_ES = buildWhatsAppLink({
+    lang: "es",
+    service: "Información general",
+  });
 
   return (
     <main
@@ -240,11 +244,21 @@ export default function Home() {
                   <span className="es">Proyectos</span>
                 </a>
 
-                {/* ✅ Contact now goes to WhatsApp (no more #contact) */}
-                <a className="hover:text-brand-white en" href={WA_CONTACT_EN} target="_blank" rel="noreferrer">
+                {/* Contact -> WhatsApp */}
+                <a
+                  className="hover:text-brand-white en"
+                  href={WA_CONTACT_EN}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Contact
                 </a>
-                <a className="hover:text-brand-white es" href={WA_CONTACT_ES} target="_blank" rel="noreferrer">
+                <a
+                  className="hover:text-brand-white es"
+                  href={WA_CONTACT_ES}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   Contacto
                 </a>
               </nav>
@@ -280,9 +294,9 @@ export default function Home() {
                   Financing
                 </a>
 
-                {/* ✅ Call Now -> WhatsApp */}
+                {/* WhatsApp quick button */}
                 <a
-                  href={WA_CALL_EN}
+                  href={WA_CONTACT_EN}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30 en"
@@ -291,7 +305,7 @@ export default function Home() {
                   <span>WhatsApp</span>
                 </a>
                 <a
-                  href={WA_CALL_ES}
+                  href={WA_CONTACT_ES}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30 es"
@@ -300,7 +314,7 @@ export default function Home() {
                   <span>WhatsApp</span>
                 </a>
 
-                {/* ✅ Free Estimate -> WhatsApp */}
+                {/* Free Estimate -> WhatsApp */}
                 <a
                   href={WA_ESTIMATE_EN}
                   target="_blank"
@@ -329,21 +343,29 @@ export default function Home() {
               <div>
                 <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-white/15 px-3 py-1 text-xs text-brand-white/80">
                   <MapPin className="h-4 w-4 text-brand-green" />
-                  <span className="en">Phoenix & Valley-Wide • Licensed / Insured • Fast Scheduling</span>
-                  <span className="es">Phoenix y todo el Valle • Licenciados / Asegurados • Agenda Rápida</span>
+                  <span className="en">
+                    Phoenix & Valley-Wide • Licensed / Insured • Fast Scheduling
+                  </span>
+                  <span className="es">
+                    Phoenix y todo el Valle • Licenciados / Asegurados • Agenda Rápida
+                  </span>
                 </p>
 
                 <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
-                  <span className="en">Landscaping & Hardscaping Services in Arizona.</span>
+                  <span className="en">
+                    Landscaping & Hardscaping Services in Arizona.
+                  </span>
                   <span className="es">Hardscape y Exteriores en Arizona.</span>
                 </h1>
 
                 <p className="mt-4 text-brand-white/80">
                   <span className="en">
-                    From pavers and turf to pergolas and fire pits—clear estimates, clean execution, and results you’ll love.
+                    From pavers and turf to pergolas and fire pits—clear estimates,
+                    clean execution, and results you’ll love.
                   </span>
                   <span className="es">
-                    Desde adoquín y pasto artificial hasta pérgolas y fogateros—cotizaciones claras, buen trabajo y resultados que te van a encantar.
+                    Desde adoquín y pasto artificial hasta pérgolas y fogateros—cotizaciones
+                    claras, buen trabajo y resultados que te van a encantar.
                   </span>
                 </p>
 
@@ -369,9 +391,9 @@ export default function Home() {
                     <span>Pedir Cotización</span>
                   </a>
 
-                  {/* Call -> WhatsApp */}
+                  {/* WhatsApp */}
                   <a
-                    href={WA_CALL_EN}
+                    href={WA_CONTACT_EN}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30 en"
@@ -380,7 +402,7 @@ export default function Home() {
                     <span>WhatsApp {PHONE_DISPLAY}</span>
                   </a>
                   <a
-                    href={WA_CALL_ES}
+                    href={WA_CONTACT_ES}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30 es"
@@ -439,8 +461,12 @@ export default function Home() {
 
                 {/* WhatsApp microcopy */}
                 <p className="mt-4 text-xs text-brand-white/60">
-                  <span className="en">Fast response via WhatsApp during business hours.</span>
-                  <span className="es">Respuesta rápida por WhatsApp en horario laboral.</span>
+                  <span className="en">
+                    Fast response via WhatsApp during business hours.
+                  </span>
+                  <span className="es">
+                    Respuesta rápida por WhatsApp en horario laboral.
+                  </span>
                 </p>
               </div>
 
@@ -500,7 +526,11 @@ export default function Home() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {/* Google */}
               <div className="flex items-center gap-4 rounded-2xl border border-brand-white/10 bg-brand-black/40 px-5 py-4 backdrop-blur">
-                <img src="/images/services/google-icon.svg" alt="Google Reviews" className="h-8 w-8" />
+                <img
+                  src="/images/services/google-icon.svg"
+                  alt="Google Reviews"
+                  className="h-8 w-8"
+                />
                 <div>
                   <p className="flex items-center gap-1 text-sm font-extrabold">
                     5.0 <span className="text-yellow-400">★★★★★</span>
@@ -511,7 +541,11 @@ export default function Home() {
 
               {/* Facebook */}
               <div className="flex items-center gap-4 rounded-2xl border border-brand-white/10 bg-brand-black/40 px-5 py-4 backdrop-blur">
-                <img src="/images/services/facebook-svg.svg" alt="Facebook Reviews" className="h-8 w-8" />
+                <img
+                  src="/images/services/facebook-svg.svg"
+                  alt="Facebook Reviews"
+                  className="h-8 w-8"
+                />
                 <div>
                   <p className="flex items-center gap-1 text-sm font-extrabold">
                     5.0 <span className="text-yellow-400">★★★★★</span>
@@ -540,8 +574,12 @@ export default function Home() {
               <span className="es">Servicios</span>
             </h2>
             <p className="mt-2 text-brand-white/75">
-              <span className="en">Free estimates valley-wide. Tell us what you need—our team will handle the rest.</span>
-              <span className="es">Cotizaciones gratis en todo el Valle. Dinos qué necesitas y nosotros nos encargamos.</span>
+              <span className="en">
+                Free estimates valley-wide. Tell us what you need—our team will handle the rest.
+              </span>
+              <span className="es">
+                Cotizaciones gratis en todo el Valle. Dinos qué necesitas y nosotros nos encargamos.
+              </span>
             </p>
 
             <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -550,30 +588,12 @@ export default function Home() {
 
                 const WA_SERVICE_EN = buildWhatsAppLink({
                   lang: "en",
-                  cta: "estimate",
                   service: s.enTitle,
-                  pageUrl,
                 });
 
                 const WA_SERVICE_ES = buildWhatsAppLink({
                   lang: "es",
-                  cta: "estimate",
                   service: s.esTitle,
-                  pageUrl,
-                });
-
-                const WA_SERVICE_CALL_EN = buildWhatsAppLink({
-                  lang: "en",
-                  cta: "call",
-                  service: `${s.enTitle} (quick question)`,
-                  pageUrl,
-                });
-
-                const WA_SERVICE_CALL_ES = buildWhatsAppLink({
-                  lang: "es",
-                  cta: "call",
-                  service: `${s.esTitle} (duda rápida)`,
-                  pageUrl,
                 });
 
                 return (
@@ -615,21 +635,25 @@ export default function Home() {
                         <span>Cotizar</span>
                       </a>
 
-                      {/* Call -> WhatsApp */}
+                      {/* WhatsApp */}
                       <a
-                        href={WA_SERVICE_CALL_EN}
+                        href={WA_SERVICE_EN}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white/85 hover:text-brand-white en"
+                        title="WhatsApp"
+                        aria-label="WhatsApp"
                       >
                         <MessageCircle className="h-4 w-4 text-brand-green" />
                         <span>WhatsApp</span>
                       </a>
                       <a
-                        href={WA_SERVICE_CALL_ES}
+                        href={WA_SERVICE_ES}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white/85 hover:text-brand-white es"
+                        title="WhatsApp"
+                        aria-label="WhatsApp"
                       >
                         <MessageCircle className="h-4 w-4 text-brand-green" />
                         <span>WhatsApp</span>
@@ -805,7 +829,11 @@ export default function Home() {
 
           {/* Lightbox */}
           {openProject !== null && (
-            <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true">
+            <div
+              className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+              role="dialog"
+              aria-modal="true"
+            >
               <button
                 type="button"
                 onClick={() => setOpenProject(null)}
@@ -835,7 +863,10 @@ export default function Home() {
                     <span className="es">Hardscape y Áreas Exteriores</span>
                   </p>
 
-                  <a href="/gallery" className="mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-brand-green hover:underline">
+                  <a
+                    href="/gallery"
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-extrabold text-brand-green hover:underline"
+                  >
                     <span className="en">View full gallery →</span>
                     <span className="es">Ver galería completa →</span>
                   </a>
@@ -852,7 +883,9 @@ export default function Home() {
               <div className="grid items-start gap-6 md:grid-cols-3">
                 {/* LEFT */}
                 <div className="space-y-3">
-                  <p className="text-sm text-brand-white/80">© 2015 JC Arizona Landscape LLC</p>
+                  <p className="text-sm text-brand-white/80">
+                    © 2015 JC Arizona Landscape LLC
+                  </p>
 
                   <div className="flex flex-wrap gap-3">
                     <a
@@ -883,16 +916,17 @@ export default function Home() {
                 </div>
 
                 {/* CENTER */}
-                <div className="text-sm text-brand-white/70 md:text-center">Serving Arizona and surrounding areas</div>
+                <div className="text-sm text-brand-white/70 md:text-center">
+                  Serving Arizona and surrounding areas
+                </div>
 
                 {/* RIGHT */}
                 <div className="space-y-2 text-sm text-brand-white/70 md:text-right">
                   <p>{LOCATION}</p>
 
-                  {/* ✅ Phone/email replaced with WhatsApp-first */}
                   <p>
                     <a
-                      href={WA_CALL_EN}
+                      href={WA_CONTACT_EN}
                       target="_blank"
                       rel="noreferrer"
                       className="text-brand-white/80 transition hover:text-brand-green en"
@@ -900,7 +934,7 @@ export default function Home() {
                       WhatsApp {PHONE_DISPLAY}
                     </a>
                     <a
-                      href={WA_CALL_ES}
+                      href={WA_CONTACT_ES}
                       target="_blank"
                       rel="noreferrer"
                       className="text-brand-white/80 transition hover:text-brand-green es"
@@ -910,21 +944,29 @@ export default function Home() {
                   </p>
 
                   <div className="pt-2 flex flex-wrap gap-6 text-xs md:justify-end">
-                    <Link href="/privacy" className="text-brand-white/60 transition hover:text-brand-green">
+                    <Link
+                      href="/privacy"
+                      className="text-brand-white/60 transition hover:text-brand-green"
+                    >
                       Privacy Policy
                     </Link>
-                    <Link href="/terms" className="text-brand-white/60 transition hover:text-brand-green">
+                    <Link
+                      href="/terms"
+                      className="text-brand-white/60 transition hover:text-brand-green"
+                    >
                       Terms &amp; Conditions
                     </Link>
                   </div>
 
-                  <p className="pt-2 text-xs text-brand-white/50">Licensed &amp; Insured · Free Estimates</p>
+                  <p className="pt-2 text-xs text-brand-white/50">
+                    Licensed &amp; Insured · Free Estimates
+                  </p>
                 </div>
               </div>
             </div>
           </footer>
 
-          {/* ✅ Floating WhatsApp button (recommended) */}
+          {/* Floating WhatsApp button */}
           <a
             href={WA_ESTIMATE_EN}
             target="_blank"
@@ -946,7 +988,7 @@ export default function Home() {
             WhatsApp
           </a>
 
-          {/* Mobile floating (always visible on mobile) */}
+          {/* Mobile floating */}
           <a
             href={WA_ESTIMATE_EN}
             target="_blank"
