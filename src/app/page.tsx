@@ -876,6 +876,128 @@ export default function Home() {
           )}
 
           {/* ✅ CONTACT SECTION REMOVED COMPLETELY */}
+            {/* WHATSAPP CONTACT SECTION (replaces old form) */}
+<section id="contact" className="mx-auto max-w-6xl px-4 py-14">
+  <div className="rounded-3xl border border-brand-white/10 bg-brand-white/5 p-6 md:p-10">
+    <div className="grid gap-6 md:grid-cols-2 md:items-center">
+      {/* Left copy */}
+      <div>
+        <div className="flex items-center gap-2">
+          <MessageCircle className="h-6 w-6 text-brand-green" />
+          <h2 className="text-2xl font-extrabold">
+            <span className="en">Contact us on WhatsApp</span>
+            <span className="es">Contáctanos por WhatsApp</span>
+          </h2>
+        </div>
+
+        <p className="mt-3 text-brand-white/80">
+          <span className="en">
+            Tap the button and send a message. We’ll reply with availability and a quick estimate.
+          </span>
+          <span className="es">
+            Pica el botón y envía un mensaje. Te respondemos con disponibilidad y un estimado rápido.
+          </span>
+        </p>
+
+        {/* quick tips */}
+        <div className="mt-5 grid gap-3">
+          {[
+            {
+              en: "Include your city + service for faster scheduling.",
+              es: "Incluye tu ciudad + servicio para agendar más rápido.",
+            },
+            {
+              en: "If you can, add a photo/video of the area.",
+              es: "Si puedes, agrega foto/video del área.",
+            },
+            {
+              en: "Tell us your timeline (this week / next week).",
+              es: "Dinos tu timeline (esta semana / la próxima).",
+            },
+          ].map((t) => (
+            <div
+              key={t.en}
+              className="flex items-start gap-3 rounded-2xl border border-brand-white/10 bg-brand-black/40 p-4"
+            >
+              <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand-green/15 text-brand-green">
+                ✓
+              </span>
+              <p className="text-sm text-brand-white/80 leading-snug">
+                <span className="en">{t.en}</span>
+                <span className="es">{t.es}</span>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right CTA card */}
+      <div className="rounded-3xl border border-brand-white/10 bg-brand-black/40 p-6 md:p-8">
+        <p className="text-sm text-brand-white/70">
+          <span className="en">Fast reply via WhatsApp</span>
+          <span className="es">Respuesta rápida por WhatsApp</span>
+        </p>
+
+        <p className="mt-2 text-2xl font-extrabold">
+          <span className="en">Get a Free Estimate</span>
+          <span className="es">Cotización Gratis</span>
+        </p>
+
+        <p className="mt-2 text-sm text-brand-white/75">
+          <span className="en">We’ll confirm availability and send a rough estimate.</span>
+          <span className="es">Confirmamos disponibilidad y te damos un estimado.</span>
+        </p>
+
+        <div className="mt-6 grid gap-3">
+          {/* BIG primary button */}
+          <a
+            href={WA_ESTIMATE_EN}
+            target="_blank"
+            rel="noreferrer"
+            className="en inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-brand-green px-6 py-4 text-base font-extrabold text-brand-white hover:bg-brand-green/90"
+          >
+            <MessageCircle className="h-5 w-5" />
+            Message us on WhatsApp
+          </a>
+          <a
+            href={WA_ESTIMATE_ES}
+            target="_blank"
+            rel="noreferrer"
+            className="es inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-brand-green px-6 py-4 text-base font-extrabold text-brand-white hover:bg-brand-green/90"
+          >
+            <MessageCircle className="h-5 w-5" />
+            Enviar WhatsApp
+          </a>
+
+          {/* Secondary button */}
+          <a
+            href={WA_CONTACT_EN}
+            target="_blank"
+            rel="noreferrer"
+            className="en inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-brand-white/15 bg-brand-white/5 px-6 py-3 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
+          >
+            <ArrowUpRight className="h-4 w-4 text-brand-green" />
+            General question
+          </a>
+          <a
+            href={WA_CONTACT_ES}
+            target="_blank"
+            rel="noreferrer"
+            className="es inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-brand-white/15 bg-brand-white/5 px-6 py-3 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
+          >
+            <ArrowUpRight className="h-4 w-4 text-brand-green" />
+            Pregunta general
+          </a>
+        </div>
+
+        <p className="mt-4 text-xs text-brand-white/60">
+          <span className="en">Tip: you can attach photos to speed up your estimate.</span>
+          <span className="es">Tip: puedes adjuntar fotos para acelerar la cotización.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
           {/* FOOTER */}
           <footer className="mt-16 border-t border-brand-white/10">
