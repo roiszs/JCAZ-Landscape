@@ -10,7 +10,6 @@ import {
   Facebook,
   Music2,
   PhoneCall,
-  Mail,
   MapPin,
   Hammer,
   BrickWall,
@@ -30,19 +29,63 @@ import {
   Flag,
   Box,
   X,
-  DollarSign
+  DollarSign,
+  MessageCircle,
 } from "lucide-react";
 
 const PHONE_DISPLAY = "480-227-7319";
-const PHONE_HREF = "tel:+14802277319";
-const EMAIL = "jcazlandscape@yahoo.com";
-const EMAIL_HREF = `mailto:${EMAIL}`;
+
+// ✅ WhatsApp phone (NO +, NO spaces)
+const WHATSAPP_PHONE = "14802277319";
+
 const LOCATION = "Phoenix, AZ";
 const INSTAGRAM = "https://www.instagram.com/jcarizonalandscape/";
 const FACEBOOK = "https://www.facebook.com/100083666319172/";
 const TIKTOK = "https://www.tiktok.com/@jcarizonalandscape";
 const FINANCING_URL = "https://www.gethearth.com/partners/jc-arizona-landscaping-llc/joshua";
 
+// ✅ WhatsApp link generator (EN/ES)
+function buildWhatsAppLink({
+  lang,
+  cta,
+  service,
+  pageUrl,
+}: {
+  lang: "en" | "es";
+  cta: "estimate" | "call" | "contact" | "general";
+  service?: string;
+  pageUrl?: string;
+}) {
+  const svc = service ?? (lang === "es" ? "un proyecto" : "a project");
+
+  const ctaLabel =
+    lang === "es"
+      ? { estimate: "Cotización", call: "Llamada", contact: "Contacto", general: "Información" }[cta]
+      : { estimate: "Estimate", call: "Call", contact: "Contact", general: "Info" }[cta];
+
+  const text =
+    lang === "es"
+      ? [
+          `Hola 👋 (${ctaLabel})`,
+          `Me interesa una cotización para: ${svc}`,
+          `Zona/ciudad: ${LOCATION}`,
+          pageUrl ? `Página: ${pageUrl}` : null,
+          `¿Me puedes compartir disponibilidad y un estimado?`,
+        ]
+          .filter(Boolean)
+          .join("\n")
+      : [
+          `Hi 👋 (${ctaLabel})`,
+          `I’d like an estimate for: ${svc}`,
+          `Area/city: ${LOCATION}`,
+          pageUrl ? `Page: ${pageUrl}` : null,
+          `Can you share availability and a rough quote?`,
+        ]
+          .filter(Boolean)
+          .join("\n");
+
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
+}
 
 const services = [
   {
@@ -128,9 +171,20 @@ const services = [
 ];
 
 export default function Home() {
-  // ✅ Hooks SIEMPRE dentro del componente
   const [openProject, setOpenProject] = useState<number | null>(null);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  // ✅ page URL for context (safe on client)
+  const pageUrl = typeof window !== "undefined" ? window.location.href : undefined;
+
+  // ✅ common WhatsApp links (general)
+  const WA_ESTIMATE_EN = buildWhatsAppLink({ lang: "en", cta: "estimate", service: "Landscaping / Hardscaping", pageUrl });
+  const WA_ESTIMATE_ES = buildWhatsAppLink({ lang: "es", cta: "estimate", service: "Hardscape / Jardinería", pageUrl });
+
+  const WA_CALL_EN = buildWhatsAppLink({ lang: "en", cta: "call", service: "Call request / quick question", pageUrl });
+  const WA_CALL_ES = buildWhatsAppLink({ lang: "es", cta: "call", service: "Solicitud de llamada / duda rápida", pageUrl });
+
+  const WA_CONTACT_EN = buildWhatsAppLink({ lang: "en", cta: "contact", service: "General inquiry", pageUrl });
+  const WA_CONTACT_ES = buildWhatsAppLink({ lang: "es", cta: "contact", service: "Información general", pageUrl });
 
   return (
     <main
@@ -185,9 +239,13 @@ export default function Home() {
                   <span className="en">Projects</span>
                   <span className="es">Proyectos</span>
                 </a>
-                <a className="hover:text-brand-white" href="#contact">
-                  <span className="en">Contact</span>
-                  <span className="es">Contacto</span>
+
+                {/* ✅ Contact now goes to WhatsApp (no more #contact) */}
+                <a className="hover:text-brand-white en" href={WA_CONTACT_EN} target="_blank" rel="noreferrer">
+                  Contact
+                </a>
+                <a className="hover:text-brand-white es" href={WA_CONTACT_ES} target="_blank" rel="noreferrer">
+                  Contacto
                 </a>
               </nav>
 
@@ -202,6 +260,7 @@ export default function Home() {
                   <span className="es">EN</span>
                 </label>
 
+                {/* ✅ DO NOT TOUCH: Gallery */}
                 <a
                   href="/gallery"
                   className="hidden md:inline-flex items-center gap-2 rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90"
@@ -209,34 +268,56 @@ export default function Home() {
                   <Images className="h-4 w-4 text-brand-white" />
                   <span>Gallery</span>
                 </a>
+
+                {/* ✅ DO NOT TOUCH: Financing */}
                 <a
-                href={FINANCING_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="hidden md:inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
-              >
-                <DollarSign className="h-4 w-4 text-brand-green" />
-                Financing
-              </a>
-
-
-
-                <a
-                  href={PHONE_HREF}
-                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
+                  href={FINANCING_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hidden md:inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm font-extrabold text-brand-white hover:border-brand-white/30"
                 >
-                  <PhoneCall className="h-4 w-4 text-brand-green" />
-                  <span className="en">Call Now</span>
-                  <span className="es">Llamar</span>
+                  <DollarSign className="h-4 w-4 text-brand-green" />
+                  Financing
                 </a>
 
+                {/* ✅ Call Now -> WhatsApp */}
                 <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90"
+                  href={WA_CALL_EN}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30 en"
+                >
+                  <MessageCircle className="h-4 w-4 text-brand-green" />
+                  <span>WhatsApp</span>
+                </a>
+                <a
+                  href={WA_CALL_ES}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30 es"
+                >
+                  <MessageCircle className="h-4 w-4 text-brand-green" />
+                  <span>WhatsApp</span>
+                </a>
+
+                {/* ✅ Free Estimate -> WhatsApp */}
+                <a
+                  href={WA_ESTIMATE_EN}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90 en"
                 >
                   <ArrowUpRight className="h-4 w-4 text-brand-white" />
-                  <span className="en">Free Estimate</span>
-                  <span className="es">Cotización Gratis</span>
+                  <span>Free Estimate</span>
+                </a>
+                <a
+                  href={WA_ESTIMATE_ES}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-3 py-2 text-sm font-extrabold text-brand-white hover:bg-brand-green/90 es"
+                >
+                  <ArrowUpRight className="h-4 w-4 text-brand-white" />
+                  <span>Cotización Gratis</span>
                 </a>
               </div>
             </div>
@@ -266,83 +347,102 @@ export default function Home() {
                   </span>
                 </p>
 
-                              {/* Primary actions */}
+                {/* Primary actions */}
                 <div className="mt-6 flex flex-wrap gap-3">
+                  {/* Get Estimate -> WhatsApp */}
+                  <a
+                    href={WA_ESTIMATE_EN}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90 en"
+                  >
+                    <ArrowUpRight className="h-4 w-4 text-brand-white" />
+                    <span>Get a Free Estimate</span>
+                  </a>
+                  <a
+                    href={WA_ESTIMATE_ES}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90 es"
+                  >
+                    <ArrowUpRight className="h-4 w-4 text-brand-white" />
+                    <span>Pedir Cotización</span>
+                  </a>
 
-                {/* Get Estimate */}
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
-                >
-                  <ArrowUpRight className="h-4 w-4 text-brand-white" />
-                  <span className="en">Get a Free Estimate</span>
-                  <span className="es">Pedir Cotización</span>
-                </a>
+                  {/* Call -> WhatsApp */}
+                  <a
+                    href={WA_CALL_EN}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30 en"
+                  >
+                    <MessageCircle className="h-4 w-4 text-brand-green" />
+                    <span>WhatsApp {PHONE_DISPLAY}</span>
+                  </a>
+                  <a
+                    href={WA_CALL_ES}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30 es"
+                  >
+                    <MessageCircle className="h-4 w-4 text-brand-green" />
+                    <span>WhatsApp {PHONE_DISPLAY}</span>
+                  </a>
 
-                {/* Call */}
-                <a
-                  href={PHONE_HREF}
-                  className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-5 py-3 font-extrabold text-brand-white hover:border-brand-white/30"
-                >
-                  <PhoneCall className="h-4 w-4 text-brand-green" />
-                  <span className="en">Call {PHONE_DISPLAY}</span>
-                  <span className="es">Llama {PHONE_DISPLAY}</span>
-                </a>
-
-                {/* Gallery - mobile only, same style as primary */}
-                <a
-                  href="/gallery"
-                  className="inline-flex md:hidden items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
-                >
-                  <Images className="h-4 w-4 text-brand-white" />
-                  <span className="en">Gallery</span>
-                  <span className="es">Galería</span>
-                </a>
-
+                  {/* ✅ DO NOT TOUCH: Gallery - mobile only */}
+                  <a
+                    href="/gallery"
+                    className="inline-flex md:hidden items-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90"
+                  >
+                    <Images className="h-4 w-4 text-brand-white" />
+                    <span className="en">Gallery</span>
+                    <span className="es">Galería</span>
+                  </a>
                 </div>
 
-
-
-                              {/* Trust badges */}
-                              {/* Trust badges */}
-              <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
-                {[
-                  { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
-                  { en: "Insured", es: "Asegurados", icon: ShieldCheck },
-                  { en: "Warranty", es: "Garantía", icon: Clock },
-                ].map((t) => {
-                  const Ico = t.icon;
-                  return (
-                    <div
-                      key={t.en}
-                      className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
-                    >
-                      <Ico className="h-4 w-4 text-brand-green" />
-                      <div className="leading-tight">
-                        <span className="en">{t.en}</span>
-                        <span className="es">{t.es}</span>
+                {/* Trust badges */}
+                <div className="mt-6 grid grid-cols-2 gap-3 text-sm text-brand-white/85 md:grid-cols-4">
+                  {[
+                    { en: "Licensed", es: "Licenciados", icon: BadgeCheck },
+                    { en: "Insured", es: "Asegurados", icon: ShieldCheck },
+                    { en: "Warranty", es: "Garantía", icon: Clock },
+                  ].map((t) => {
+                    const Ico = t.icon;
+                    return (
+                      <div
+                        key={t.en}
+                        className="flex items-center gap-2 rounded-xl border border-brand-white/10 bg-brand-white/5 p-3"
+                      >
+                        <Ico className="h-4 w-4 text-brand-green" />
+                        <div className="leading-tight">
+                          <span className="en">{t.en}</span>
+                          <span className="es">{t.es}</span>
+                        </div>
                       </div>
+                    );
+                  })}
+
+                  {/* ✅ DO NOT TOUCH: Financing badge (clickeable) */}
+                  <a
+                    href={FINANCING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 rounded-xl border-2 border-brand-green/60 bg-brand-green/10 p-3 transition hover:bg-brand-green hover:text-brand-white"
+                  >
+                    <FileText className="h-4 w-4 text-brand-green" />
+                    <div className="leading-tight font-extrabold">
+                      <span className="en">Financing (Click here) </span>
+                      <span className="es">Financiamiento (Click Aquí) </span>
                     </div>
-                  );
-                })}
+                  </a>
+                </div>
 
-                {/* Financing badge (clickeable) */}
-                <a
-                  href={FINANCING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 rounded-xl border-2 border-brand-green/60 bg-brand-green/10 p-3 transition hover:bg-brand-green hover:text-brand-white"
-                >
-                  <FileText className="h-4 w-4 text-brand-green" />
-                  <div className="leading-tight font-extrabold">
-                    <span className="en">Financing (Click here) </span>
-                    <span className="es">Financiamiento (Click Aquí) </span>
-                  </div>
-                </a>
-
+                {/* WhatsApp microcopy */}
+                <p className="mt-4 text-xs text-brand-white/60">
+                  <span className="en">Fast response via WhatsApp during business hours.</span>
+                  <span className="es">Respuesta rápida por WhatsApp en horario laboral.</span>
+                </p>
               </div>
-              </div>
-
 
               {/* Video card */}
               <div className="rounded-2xl border border-brand-white/10 bg-brand-white/5 p-6">
@@ -448,6 +548,34 @@ export default function Home() {
               {services.map((s) => {
                 const Ico = s.icon;
 
+                const WA_SERVICE_EN = buildWhatsAppLink({
+                  lang: "en",
+                  cta: "estimate",
+                  service: s.enTitle,
+                  pageUrl,
+                });
+
+                const WA_SERVICE_ES = buildWhatsAppLink({
+                  lang: "es",
+                  cta: "estimate",
+                  service: s.esTitle,
+                  pageUrl,
+                });
+
+                const WA_SERVICE_CALL_EN = buildWhatsAppLink({
+                  lang: "en",
+                  cta: "call",
+                  service: `${s.enTitle} (quick question)`,
+                  pageUrl,
+                });
+
+                const WA_SERVICE_CALL_ES = buildWhatsAppLink({
+                  lang: "es",
+                  cta: "call",
+                  service: `${s.esTitle} (duda rápida)`,
+                  pageUrl,
+                });
+
                 return (
                   <div
                     key={s.key}
@@ -467,22 +595,44 @@ export default function Home() {
                     </p>
 
                     <div className="mt-4 flex items-center justify-between">
+                      {/* Get Estimate -> WhatsApp */}
                       <a
-                        href="#contact"
-                        className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white hover:text-brand-white/90"
+                        href={WA_SERVICE_EN}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white hover:text-brand-white/90 en"
                       >
                         <ArrowUpRight className="h-4 w-4 text-brand-green" />
-                        <span className="en">Get Estimate</span>
-                        <span className="es">Cotizar</span>
+                        <span>Get Estimate</span>
+                      </a>
+                      <a
+                        href={WA_SERVICE_ES}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white hover:text-brand-white/90 es"
+                      >
+                        <ArrowUpRight className="h-4 w-4 text-brand-green" />
+                        <span>Cotizar</span>
                       </a>
 
+                      {/* Call -> WhatsApp */}
                       <a
-                        href={PHONE_HREF}
-                        className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white/85 hover:text-brand-white"
+                        href={WA_SERVICE_CALL_EN}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white/85 hover:text-brand-white en"
                       >
-                        <PhoneCall className="h-4 w-4 text-brand-green" />
-                        <span className="en">Call</span>
-                        <span className="es">Llamar</span>
+                        <MessageCircle className="h-4 w-4 text-brand-green" />
+                        <span>WhatsApp</span>
+                      </a>
+                      <a
+                        href={WA_SERVICE_CALL_ES}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-extrabold text-brand-white/85 hover:text-brand-white es"
+                      >
+                        <MessageCircle className="h-4 w-4 text-brand-green" />
+                        <span>WhatsApp</span>
                       </a>
                     </div>
                   </div>
@@ -694,270 +844,127 @@ export default function Home() {
             </div>
           )}
 
-          {/* CONTACT */}
-          <section id="contact" className="mx-auto max-w-6xl px-4 py-14">
-            <div className="rounded-3xl border border-brand-white/10 bg-brand-white/5 p-6 md:p-10">
-              <div className="grid gap-6 md:grid-cols-2 md:items-start">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-6 w-6 text-brand-green" />
-                    <h2 className="text-2xl font-extrabold">
-                      <span className="en">Get a Free Estimate</span>
-                      <span className="es">Cotización Gratis</span>
-                    </h2>
-                  </div>
+          {/* ✅ CONTACT SECTION REMOVED COMPLETELY */}
 
-                  <p className="mt-2 text-brand-white/75">
-                    <span className="en">Call, email, or send your details and we’ll contact you shortly.</span>
-                    <span className="es">Llama, envía email o deja tus datos y te contactamos pronto.</span>
-                  </p>
+          {/* FOOTER */}
+          <footer className="mt-16 border-t border-brand-white/10">
+            <div className="mx-auto max-w-6xl px-6 py-7">
+              <div className="grid items-start gap-6 md:grid-cols-3">
+                {/* LEFT */}
+                <div className="space-y-3">
+                  <p className="text-sm text-brand-white/80">© 2015 JC Arizona Landscape LLC</p>
 
-                  <div className="mt-5 space-y-3 text-sm text-brand-white/80">
-                    <p className="flex items-center gap-2">
-                      <PhoneCall className="h-4 w-4 text-brand-green" />
-                      <span className="font-extrabold text-brand-white">Phone:</span>{" "}
-                      <a className="text-brand-white hover:text-brand-white/90" href={PHONE_HREF}>
-                        {PHONE_DISPLAY}
-                      </a>
-                    </p>
-
-                    <p className="flex items-center gap-2">
-                      <Mail className="h-4 w-4 text-brand-green" />
-                      <span className="font-extrabold text-brand-white">Email:</span>{" "}
-                      <a className="text-brand-white hover:text-brand-white/90" href={EMAIL_HREF}>
-                        {EMAIL}
-                      </a>
-                    </p>
-
-                    <p className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-brand-green" />
-                      <span className="font-extrabold text-brand-white">
-                        <span className="en">Location:</span>
-                        <span className="es">Ubicación:</span>
-                      </span>{" "}
-                      {LOCATION}
-                    </p>
-
-                    <div className="pt-2 flex flex-wrap gap-2">
-                      <a
-                        href={INSTAGRAM}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-                      >
-                        <Instagram className="h-4 w-4 text-brand-green" />
-                        Instagram
-                      </a>
-                      <a
-                        href={FACEBOOK}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-xl border border-brand-white/15 px-3 py-2 text-sm text-brand-white/90 hover:border-brand-white/30"
-                      >
-                        <Facebook className="h-4 w-4 text-brand-green" />
-                        Facebook
-                      </a>
-                    </div>
+                  <div className="flex flex-wrap gap-3">
+                    <a
+                      href={INSTAGRAM}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+                    >
+                      Instagram
+                    </a>
+                    <a
+                      href={FACEBOOK}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+                    >
+                      Facebook
+                    </a>
+                    <a
+                      href={TIKTOK}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+                    >
+                      TikTok
+                    </a>
                   </div>
                 </div>
 
-                {/* ✅ Form funcional (status + names + POST a /api/lead) */}
-                <form
-                  className="grid gap-3 md:grid-cols-2"
-                  onSubmit={async (e) => {
-                    e.preventDefault();
-                    const form = e.currentTarget;
-                    const fd = new FormData(form);
-                    const payload = Object.fromEntries(fd);
+                {/* CENTER */}
+                <div className="text-sm text-brand-white/70 md:text-center">Serving Arizona and surrounding areas</div>
 
-                    setStatus("loading");
+                {/* RIGHT */}
+                <div className="space-y-2 text-sm text-brand-white/70 md:text-right">
+                  <p>{LOCATION}</p>
 
-                    try {
-                      const res = await fetch("/api", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload),
-                      });
-                      
+                  {/* ✅ Phone/email replaced with WhatsApp-first */}
+                  <p>
+                    <a
+                      href={WA_CALL_EN}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-brand-white/80 transition hover:text-brand-green en"
+                    >
+                      WhatsApp {PHONE_DISPLAY}
+                    </a>
+                    <a
+                      href={WA_CALL_ES}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-brand-white/80 transition hover:text-brand-green es"
+                    >
+                      WhatsApp {PHONE_DISPLAY}
+                    </a>
+                  </p>
 
-                      if (!res.ok) throw new Error("Request failed");
-                      setStatus("success");
-                      form.reset();
-                    } catch (err) {
-                      console.error(err);
-                      setStatus("error");
-                    }
-                  }}
-                >
-                  <input
-                    name="firstName"
-                    required
-                    className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60"
-                    placeholder="First Name"
-                  />
-                  <input
-                    name="lastName"
-                    required
-                    className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60"
-                    placeholder="Last Name"
-                  />
-
-                  <input
-                    name="phone"
-                    required
-                    className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
-                    placeholder="Phone"
-                  />
-
-                  <input
-                    name="address"
-                    required
-                    className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/70 md:col-span-2"
-                    placeholder="Address (job site)"
-                  />
-
-                  <div className="grid gap-3 md:col-span-2 md:grid-cols-2">
-                    <input
-                      name="city"
-                      className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/70"
-                      placeholder="City"
-                    />
-                    <input
-                      name="zip"
-                      className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/70"
-                      placeholder="ZIP"
-                    />
+                  <div className="pt-2 flex flex-wrap gap-6 text-xs md:justify-end">
+                    <Link href="/privacy" className="text-brand-white/60 transition hover:text-brand-green">
+                      Privacy Policy
+                    </Link>
+                    <Link href="/terms" className="text-brand-white/60 transition hover:text-brand-green">
+                      Terms &amp; Conditions
+                    </Link>
                   </div>
 
-                  <input
-                    name="email"
-                    className="rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
-                    placeholder="Email"
-                  />
-
-                  <textarea
-                    name="message"
-                    className="min-h-28 rounded-xl border border-brand-white/10 bg-brand-black/40 px-4 py-3 outline-none placeholder:text-brand-white/40 focus:border-brand-green/60 md:col-span-2"
-                    placeholder="Project details / Detalles del proyecto"
-                  />
-
-                  {/* metadata */}
-                  <input type="hidden" name="lang" value="en" />
-                  <input type="hidden" name="source" value="home" />
-
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green px-5 py-3 font-extrabold text-brand-white hover:bg-brand-green/90 md:col-span-2 disabled:opacity-60"
-                    type="submit"
-                    disabled={status === "loading"}
-                  >
-                    <ArrowUpRight className="h-4 w-4 text-brand-white" />
-                    {status === "loading" ? "Sending..." : "Submit"}
-                  </button>
-
-                  {status === "success" && (
-                    <p className="md:col-span-2 text-sm text-brand-white/80">✅ Sent! We’ll contact you shortly.</p>
-                  )}
-                  {status === "error" && (
-                    <p className="md:col-span-2 text-sm text-red-300">❌ Something went wrong. Please call us or try again.</p>
-                  )}
-
-                  <p className="md:col-span-2 text-xs text-brand-white/60">
-                    <span className="en">Tip: include your city and the service you need for faster scheduling.</span>
-                    <span className="es">Tip: agrega tu ciudad y el servicio que necesitas para agendar más rápido.</span>
-                  </p>
-                </form>
+                  <p className="pt-2 text-xs text-brand-white/50">Licensed &amp; Insured · Free Estimates</p>
+                </div>
               </div>
             </div>
-          </section>
+          </footer>
 
-                  {/* FOOTER */}
-                  <footer className="mt-16 border-t border-brand-white/10">
-      <div className="mx-auto max-w-6xl px-6 py-7">
-        <div className="grid items-start gap-6 md:grid-cols-3">
-          {/* LEFT */}
-          <div className="space-y-3">
-            <p className="text-sm text-brand-white/80">
-              © 2015 JC Arizona Landscape LLC
-            </p>
+          {/* ✅ Floating WhatsApp button (recommended) */}
+          <a
+            href={WA_ESTIMATE_EN}
+            target="_blank"
+            rel="noreferrer"
+            className="fixed bottom-5 right-5 z-[80] hidden en md:inline-flex items-center gap-2 rounded-full bg-brand-green px-5 py-3 text-sm font-extrabold text-brand-white shadow-lg hover:bg-brand-green/90"
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageCircle className="h-4 w-4" />
+            WhatsApp
+          </a>
+          <a
+            href={WA_ESTIMATE_ES}
+            target="_blank"
+            rel="noreferrer"
+            className="fixed bottom-5 right-5 z-[80] hidden es md:inline-flex items-center gap-2 rounded-full bg-brand-green px-5 py-3 text-sm font-extrabold text-brand-white shadow-lg hover:bg-brand-green/90"
+            aria-label="Chatear por WhatsApp"
+          >
+            <MessageCircle className="h-4 w-4" />
+            WhatsApp
+          </a>
 
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={INSTAGRAM}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
-              >
-                Instagram
-              </a>
-              <a
-                href={FACEBOOK}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
-              >
-                Facebook
-              </a>
-              <a
-                href={TIKTOK}
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
-              >
-                TikTok
-              </a>
-            </div>
-          </div>
-
-          {/* CENTER */}
-          <div className="text-sm text-brand-white/70 md:text-center">
-            Serving Arizona and surrounding areas
-          </div>
-
-          {/* RIGHT */}
-          <div className="space-y-2 text-sm text-brand-white/70 md:text-right">
-            <p>Phoenix, AZ</p>
-
-            <p>
-              <a
-                href="tel:4802277319"
-                className="text-brand-white/80 transition hover:text-brand-green"
-              >
-                480-227-7319
-              </a>
-            </p>
-
-            <p>
-              <a
-                href="mailto:jcazlandscape@yahoo.com"
-                className="text-brand-white/80 transition hover:text-brand-green"
-              >
-                jcazlandscape@yahoo.com
-              </a>
-            </p>
-
-            <div className="pt-2 flex flex-wrap gap-6 text-xs md:justify-end">
-              <Link
-                href="/privacy"
-                className="text-brand-white/60 transition hover:text-brand-green"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="text-brand-white/60 transition hover:text-brand-green"
-              >
-                Terms &amp; Conditions
-              </Link>
-            </div>
-
-            <p className="pt-2 text-xs text-brand-white/50">
-              Licensed &amp; Insured · Free Estimates
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
+          {/* Mobile floating (always visible on mobile) */}
+          <a
+            href={WA_ESTIMATE_EN}
+            target="_blank"
+            rel="noreferrer"
+            className="fixed bottom-5 right-5 z-[80] inline-flex md:hidden en items-center justify-center rounded-full bg-brand-green p-4 text-brand-white shadow-lg hover:bg-brand-green/90"
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageCircle className="h-5 w-5" />
+          </a>
+          <a
+            href={WA_ESTIMATE_ES}
+            target="_blank"
+            rel="noreferrer"
+            className="fixed bottom-5 right-5 z-[80] inline-flex md:hidden es items-center justify-center rounded-full bg-brand-green p-4 text-brand-white shadow-lg hover:bg-brand-green/90"
+            aria-label="Chatear por WhatsApp"
+          >
+            <MessageCircle className="h-5 w-5" />
+          </a>
         </div>
       </div>
     </main>
