@@ -1,7 +1,7 @@
 import Link from "next/link";
 import GalleryClient from "./GalleryClient";
 import BrandBackground from "@/components/layout/BrandBackground";
-import { ArrowLeft, MessageCircle } from "lucide-react";
+import { ArrowLeft, MessageCircle, ArrowUpRight } from "lucide-react";
 
 export const metadata = {
   title: "Gallery | JC Arizona Landscape",
@@ -18,50 +18,79 @@ const INSTAGRAM = "https://www.instagram.com/jcarizonalandscape/";
 const FACEBOOK = "https://www.facebook.com/100083666319172/";
 const TIKTOK = "https://www.tiktok.com/@jcarizonalandscape";
 
-// ✅ WhatsApp link generator (EN/ES) — minimal conversion message
+/**
+ * ✅ WhatsApp link generator
+ * - estimate: incluye "Me interesa una cotización para: X"
+ * - general: NO menciona cotización (evita "cotización para: Información general")
+ */
 function buildWhatsAppLink({
   lang,
+  type,
   service,
 }: {
   lang: "en" | "es";
-  service: string;
+  type: "estimate" | "general";
+  service?: string;
 }) {
-  const text =
-    lang === "es"
-      ? [
-          "Hola JC Arizona Landscape.",
-          `Me interesa una cotización para: ${service}.`,
-          "¿Me puedes compartir disponibilidad y un estimado?",
-          "Avísame si necesitas más información sobre mi proyecto.",
-        ].join("\n")
-      : [
-          "Hello JC Arizona Landscape.",
-          `I’m interested in a quote for: ${service}.`,
-          "Can you share availability and an estimate?",
-          "Let me know if you need any additional information about my project.",
-        ].join("\n");
+  let text = "";
+
+  if (lang === "es") {
+    if (type === "estimate") {
+      const svc = service ?? "mi proyecto";
+      text = [
+        "Hola JC Arizona Landscape.",
+        `Me interesa una cotización para: ${svc}.`,
+        "¿Me puedes compartir disponibilidad y un estimado?",
+        "Avísame si necesitas más información sobre mi proyecto.",
+      ].join("\n");
+    } else {
+      text = [
+        "Hola JC Arizona Landscape.",
+        "Tengo una pregunta sobre sus servicios.",
+        "¿Me pueden compartir más información?",
+      ].join("\n");
+    }
+  } else {
+    if (type === "estimate") {
+      const svc = service ?? "my project";
+      text = [
+        "Hello JC Arizona Landscape.",
+        `I’m interested in a quote for: ${svc}.`,
+        "Can you share availability and an estimate?",
+        "Let me know if you need any additional information about my project.",
+      ].join("\n");
+    } else {
+      text = [
+        "Hello JC Arizona Landscape.",
+        "I have a question about your services.",
+        "Could you share more information?",
+      ].join("\n");
+    }
+  }
 
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(text)}`;
 }
 
 const WA_ESTIMATE_EN = buildWhatsAppLink({
   lang: "en",
+  type: "estimate",
   service: "Project from Gallery photos",
 });
 
 const WA_ESTIMATE_ES = buildWhatsAppLink({
   lang: "es",
+  type: "estimate",
   service: "Proyecto basado en fotos de la galería",
 });
 
 const WA_CONTACT_EN = buildWhatsAppLink({
   lang: "en",
-  service: "General question from Gallery",
+  type: "general",
 });
 
 const WA_CONTACT_ES = buildWhatsAppLink({
   lang: "es",
-  service: "Pregunta general desde la galería",
+  type: "general",
 });
 
 const PHOTOS = [
@@ -119,21 +148,28 @@ export default function GalleryPage() {
                           transition hover:border-brand-white/30 hover:bg-brand-white/5"
                 >
                   <ArrowLeft className="h-4 w-4 text-brand-green" />
-                  Back Home
+                  <span className="en">Back Home</span>
+                  <span className="es">Inicio</span>
                 </Link>
 
                 <span className="rounded-full border border-brand-white/10 bg-brand-white/5 px-3 py-1 text-xs text-brand-white/70">
-                  Curated Work • JC Arizona
+                  <span className="en">Curated Work • JC Arizona</span>
+                  <span className="es">Trabajos • JC Arizona</span>
                 </span>
               </div>
 
-              <h1 className="mt-4 text-3xl font-extrabold md:text-4xl">Gallery</h1>
+              <h1 className="mt-4 text-3xl font-extrabold md:text-4xl">
+                <span className="en">Gallery</span>
+                <span className="es">Galería</span>
+              </h1>
+
               <p className="mt-2 max-w-2xl text-brand-white/75">
                 <span className="en">
                   Recent projects by JC Arizona. Tap any photo to view full size. Use filters to browse by service type.
                 </span>
                 <span className="es">
-                  Proyectos recientes de JC Arizona. Toca cualquier foto para verla en grande. Usa los filtros para ver por tipo de servicio.
+                  Proyectos recientes de JC Arizona. Toca cualquier foto para verla en grande. Usa los filtros para ver
+                  por tipo de servicio.
                 </span>
               </p>
             </div>
@@ -144,16 +180,18 @@ export default function GalleryPage() {
                 href={WA_ESTIMATE_EN}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-brand-green px-5 py-3 text-sm font-extrabold text-brand-white hover:bg-brand-green/90 en"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green px-5 py-3 text-sm font-extrabold text-brand-white hover:bg-brand-green/90 en"
               >
+                <MessageCircle className="h-4 w-4" />
                 Free Estimate
               </a>
               <a
                 href={WA_ESTIMATE_ES}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-xl bg-brand-green px-5 py-3 text-sm font-extrabold text-brand-white hover:bg-brand-green/90 es"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-green px-5 py-3 text-sm font-extrabold text-brand-white hover:bg-brand-green/90 es"
               >
+                <MessageCircle className="h-4 w-4" />
                 Cotización
               </a>
 
@@ -165,8 +203,8 @@ export default function GalleryPage() {
                 aria-label="WhatsApp"
                 title="WhatsApp"
               >
-                <MessageCircle className="h-4 w-4 text-brand-green" />
-                WhatsApp
+                <ArrowUpRight className="h-4 w-4 text-brand-green" />
+                General Question
               </a>
               <a
                 href={WA_CONTACT_ES}
@@ -176,8 +214,8 @@ export default function GalleryPage() {
                 aria-label="WhatsApp"
                 title="WhatsApp"
               >
-                <MessageCircle className="h-4 w-4 text-brand-green" />
-                WhatsApp
+                <ArrowUpRight className="h-4 w-4 text-brand-green" />
+                Pregunta General
               </a>
             </div>
           </div>
@@ -270,7 +308,8 @@ export default function GalleryPage() {
 
               {/* CENTER */}
               <div className="text-sm text-brand-white/70 md:text-center">
-                Serving Arizona and surrounding areas
+                <span className="en">Serving Arizona and surrounding areas</span>
+                <span className="es">Sirviendo Arizona y áreas cercanas</span>
               </div>
 
               {/* RIGHT */}
