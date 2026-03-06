@@ -1038,27 +1038,28 @@ export default function Home() {
         </div>
       </div>
             {/* Floating Instagram DM button (desktop) */}
-        <a
-          href={INSTAGRAM_DM}
-          target="_blank"
-          rel="noreferrer"
-          className="fixed bottom-5 right-5 z-[80] hidden md:inline-flex items-center gap-2 rounded-full border border-brand-white/15 bg-brand-black px-5 py-3 text-sm font-extrabold text-brand-white shadow-lg hover:border-brand-white/30 hover:scale-105 transition animate-pulse"
-          aria-label="Message us on Instagram"
-        >
-          <Instagram className="h-4 w-4 text-brand-green" />
-          Message us
-        </a>
+        {/* Floating Instagram DM button (desktop) */}
+            <a
+              href={INSTAGRAM_DM}
+              target="_blank"
+              rel="noreferrer"
+              className="fixed bottom-5 right-5 z-[80] hidden md:inline-flex items-center gap-2 rounded-full border border-brand-white/15 bg-brand-black px-5 py-3 text-sm font-extrabold text-brand-white shadow-lg hover:border-brand-white/30 hover:scale-105 transition"
+              aria-label="Message us on Instagram"
+            >
+              <Instagram className="h-4 w-4 text-brand-green" />
+              Message us
+            </a>
 
-        {/* Floating Instagram DM button (mobile) */}
-        <a
-          href={INSTAGRAM_DM}
-          target="_blank"
-          rel="noreferrer"
-          className="fixed bottom-5 right-5 z-[80] inline-flex md:hidden items-center justify-center rounded-full border border-brand-white/15 bg-brand-black p-4 text-brand-white shadow-lg hover:border-brand-white/30 hover:scale-105 transition animate-pulse"
-          aria-label="Message us on Instagram"
-        >
-          <Instagram className="h-5 w-5 text-brand-green" />
-        </a>
+            {/* Floating Instagram DM button (mobile) */}
+            <a
+              href={INSTAGRAM_DM}
+              target="_blank"
+              rel="noreferrer"
+              className="fixed bottom-5 right-5 z-[80] inline-flex md:hidden items-center justify-center rounded-full border border-brand-white/15 bg-brand-black p-4 text-brand-white shadow-lg hover:border-brand-white/30 hover:scale-105 transition"
+              aria-label="Message us on Instagram"
+            >
+              <Instagram className="h-5 w-5 text-brand-green" />
+            </a>
     </main>
   );
 }
