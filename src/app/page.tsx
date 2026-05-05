@@ -949,92 +949,103 @@ export default function Home() {
           </section>
 
           {/* FOOTER */}
-          <footer className="mt-16 border-t border-brand-white/10">
-            <div className="mx-auto max-w-6xl px-6 py-7">
-              <div className="grid items-start gap-6 md:grid-cols-3">
-                <div className="space-y-3">
-                  <p className="text-sm text-brand-white/80">
-                    © 2015 JC Arizona Landscape LLC
-                  </p>
+<footer className="mt-16 border-t border-brand-white/10">
+  <div className="mx-auto max-w-6xl px-6 py-7">
+    <div className="grid items-start gap-6 md:grid-cols-3">
+      <div className="space-y-3">
+        <p className="text-sm text-brand-white/80">
+          © 2015 JC Arizona Landscape LLC
+        </p>
 
-                  <div className="flex flex-wrap gap-3">
-                    <a
-                      href={INSTAGRAM}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
-                    >
-                      Instagram
-                    </a>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href={INSTAGRAM}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+          >
+            Instagram
+          </a>
 
-                    <a
-                      href={FACEBOOK}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
-                    >
-                      Facebook
-                    </a>
+          <a
+            href={FACEBOOK}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+          >
+            Facebook
+          </a>
 
-                    <a
-                      href={TIKTOK}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
-                    >
-                      TikTok
-                    </a>
-                  </div>
-                </div>
+          <a
+            href={TIKTOK}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-brand-green/30 bg-brand-white/5 px-5 py-2 text-sm text-brand-green/90 transition hover:border-brand-green/60 hover:bg-brand-white/10"
+          >
+            TikTok
+          </a>
+        </div>
+      </div>
 
-                <div className="text-sm text-brand-white/70 md:text-center">
-                  Serving Arizona and surrounding areas
-                </div>
+      <div className="text-sm text-brand-white/70 md:text-center">
+        Serving Arizona and surrounding areas
+      </div>
 
-                <div className="space-y-2 text-sm text-brand-white/70 md:text-right">
-                  <p>Phoenix, AZ</p>
+      <div className="space-y-2 text-sm text-brand-white/70 md:text-right">
+        <p>Phoenix, AZ</p>
 
-                  <p>
-                    <a
-                      href="tel:4802277319"
-                      className="text-brand-white/80 transition hover:text-brand-green"
-                    >
-                      480-227-7319
-                    </a>
-                  </p>
+        <p>
+          <a
+            href="tel:4802277319"
+            className="text-brand-white/80 transition hover:text-brand-green"
+          >
+            480-227-7319
+          </a>
+        </p>
 
-                  <p>
-                    <a
-                      href="mailto:jcazlandscape@yahoo.com"
-                      className="text-brand-white/80 transition hover:text-brand-green"
-                    >
-                      jcazlandscape@yahoo.com
-                    </a>
-                  </p>
+        <p>
+          <a
+            href="mailto:jcazlandscape@yahoo.com"
+            className="text-brand-white/80 transition hover:text-brand-green"
+          >
+            jcazlandscape@yahoo.com
+          </a>
+        </p>
 
-                  <div className="flex flex-wrap gap-6 pt-2 text-xs md:justify-end">
-                    <Link
-                      href="/privacy"
-                      className="text-brand-white/60 transition hover:text-brand-green"
-                    >
-                      Privacy Policy
-                    </Link>
+        <div className="flex flex-wrap gap-6 pt-2 text-xs md:justify-end">
+          <Link
+            href="/privacy"
+            className="text-brand-white/60 transition hover:text-brand-green"
+          >
+            Privacy Policy
+          </Link>
 
-                    <Link
-                      href="/terms"
-                      className="text-brand-white/60 transition hover:text-brand-green"
-                    >
-                      Terms &amp; Conditions
-                    </Link>
-                  </div>
+          <Link
+            href="/terms"
+            className="text-brand-white/60 transition hover:text-brand-green"
+          >
+            Terms &amp; Conditions
+          </Link>
+        </div>
 
-                  <p className="pt-2 text-xs text-brand-white/50">
-                    Licensed &amp; Insured · Free Estimates
-                  </p>
-                </div>
-              </div>
-            </div>
-          </footer>
+        <p className="pt-2 text-xs text-brand-white/50">
+          Licensed &amp; Insured · Free Estimates
+        </p>
+      </div>
+    </div>
+
+    <div className="mt-6 border-t border-brand-white/10 pt-5 text-center">
+  <a
+    href="https://www.fronteracode.com/"
+    target="_blank"
+    rel="noreferrer"
+    className="text-xs text-brand-white/50 transition hover:text-brand-green"
+  >
+    Website crafted by FronteraCode
+  </a>
+</div>
+  </div>
+</footer>
         </div>
       </div>
             {/* Floating Instagram DM button (desktop) */}
